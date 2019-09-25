@@ -1,0 +1,33 @@
+After completing the assignment, please answer the questions in this text file and submit it to I-Learn.
+
+1. Copy and paste the URL for your Heroku web application:
+
+https://mysterious-peak-33610.herokuapp.com
+
+2. Copy and paste the URL for your GitHub source code repository:
+
+https://github.com/pereira-pedro/cs313-php
+
+3. Briefly list and describe the elements of the application that are functioning. Include any special instructions about how to login and/or use your application.
+
+It shows a Hello World html h1 header.
+
+4. Briefly describe any pieces of the assignment that are not yet working correctly.
+
+
+5. Briefly describe the "coolest" thing you learned while completing this assignment.
+
+Using Heroku is awesome. Didn't know it.
+
+6. Please select the category you feel best describes your assignment: [1-5]
+1 - Some attempt was made
+2 - Developing, but significantly deficient
+3 - Slightly deficient, but still mostly adequate
+4 - Meets requirements
+5 - Shows creativity and excels above and beyond requirements
+
+4.
+
+7. Provide a brief justification (1-2 sentences) for selecting that category.
+
+There's no need for creativity in this assignment.

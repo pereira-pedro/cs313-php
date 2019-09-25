@@ -1,0 +1,22 @@
+#div-1 {
+    font-size: 1.1em;
+    background-color: #ff0000;
+}
+
+#div-2 {
+    font-size: 1.2em;
+    background-color: #0000ff;
+}
+#div-3 {
+    font-size: 1.3em;
+    background-color: #ffff00;
+}
+
+.container-bold:hover {
+    font-weight: bold;
+}
+.square {
+    height: 80px;
+    width: 80px;
+}
+
