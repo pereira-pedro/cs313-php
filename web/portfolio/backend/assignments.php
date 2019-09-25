@@ -1,16 +1,28 @@
 <?php
 $assignments = [
     [
-        'name' => 'Test',
+        'id' => 1,
+        'title' => 'Test',
         'description' => 'Description',
         'due' => '09/29/2019',
+        'url' => 'http://www.pontonet.com',
         'status' => 'Pending'
     ],
     [
-        'name' => 'Test 2',
+        'id' => 2,
+        'title' => 'Test 2',
         'description' => 'Description 2',
         'due' => '09/30/2019',
-        'status' => 'Started'
+        'url' => 'http://infinita.info',
+        'status' => 'Done'
+    ],
+    [
+        'id' => 3,
+        'title' => 'Test 3',
+        'description' => 'Description 3',
+        'due' => '09/28/2019',
+        'url' => 'http://turbospot.com.br',
+        'status' => 'Working'
     ],
 ];
 

@@ -44,11 +44,28 @@
     <section class="py-5 m-3">
       <div class="container">
         <h2 class="font-weight-light">Assignments</h2>
-        <p>This is the list of assignments. It is dynamically updated from a backend database server.
+        <p>
+          This is the list of assignments. It is dynamically updated from a
+          backend database server.
         </p>
       </div>
-    </section>
+      <div class="container">
+        <div class="row">
+          <div id="assignment-list" class="col-sm-3">
 
+            
+            <div class="card m-3">
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <a href="#" class="card-link">Card link</a>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </section>
     <script
       src="https://code.jquery.com/jquery-3.4.1.min.js"
       integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
@@ -64,5 +81,7 @@
       integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
       crossorigin="anonymous"
     ></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+    <script src="js/assignments.js"></script>
   </body>
 </html>
