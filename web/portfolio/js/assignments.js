@@ -1,7 +1,7 @@
 var ASSIGNMENT_TEMPLATE = "";
 
 $(function() {
-  $.get("../view/assignment-partial.html", function(data) {
+  $.get("view/assignment-partial.html", function(data) {
     ASSIGNMENT_TEMPLATE = data;
 
     fetchAssignments();
@@ -9,7 +9,7 @@ $(function() {
 });
 
 function fetchAssignments() {
-  $.getJSON("../backend/assignments.php", function(response) {
+  $.getJSON("backend/assignments.php", function(response) {
     var assignmentList = $("#assignment-list");
     if (response.status !== "OK") {
       swal({
