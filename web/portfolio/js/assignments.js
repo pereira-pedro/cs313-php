@@ -42,6 +42,7 @@ function createAssignmentObject(container, assignment) {
     .replace(/TITLE/g, assignment.title)
     .replace(/DESCRIPTION/g, assignment.description)
     .replace(/URL/g, assignment.url)
+    .replace(/DUE/g, assignment.due)
     .replace(/STATUS/g, renderStatus(assignment.status));
 
   var newAssignment = $(htmlItem);
