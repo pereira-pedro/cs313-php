@@ -37,7 +37,8 @@ function fetchAssignments() {
 }
 
 function createAssignmentObject(container, assignment) {
-  var htmlItem = ASSIGNMENT_TEMPLATE.replace(/ID/g, assignment.id)
+  var htmlItem = ASSIGNMENT_TEMPLATE
+    .replace(/ID/g, assignment.id)
     .replace(/TITLE/g, assignment.title)
     .replace(/DESCRIPTION/g, assignment.description)
     .replace(/URL/g, assignment.url)
