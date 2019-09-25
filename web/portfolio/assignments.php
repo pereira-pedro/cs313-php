@@ -52,15 +52,6 @@
       <div class="container">
         <div class="row">
           <div id="assignment-list" class="col-sm-3">
-
-            
-            <div class="card m-3">
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="card-link">Card link</a>
-              </div>
-            </div>
             
           </div>
         </div>
