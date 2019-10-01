@@ -3,7 +3,7 @@
  */
 $(function() {
   // this event handles the div 3 visibility using jQuery
-  $( "#target" ).submit(function( event ) {
+  $( "#form1" ).submit(function( event ) {
     submitForm($("#results-container"));
     event.preventDefault();
   });
