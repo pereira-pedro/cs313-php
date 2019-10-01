@@ -13,7 +13,7 @@ $(function() {
  * This method submits form
  */
 function submitForm(container) {
-  $.post("handle.php", $("#form1").serialize(), function(response) {
+  $.post("../backend/form-handler.php", $("#form1").serialize(), function(response) {
     Object.keys(response).forEach(function(key) {
       var newElement = $("<div />", {
         class: "d-flex justify-content-between"
