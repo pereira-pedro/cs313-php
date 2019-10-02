@@ -25,17 +25,12 @@ function submitForm(container) {
         .append(`<div class="p-2">${key}</div>`)
         .append(`<div class="p-2">${Reflect.get(response, key)}</div>`);
 
-      var newButton = $("</button>", {
+      var newButton = $("<button/>", {
         class: "btn",
-        text: "Show Form",
-        click: function() {
-          $("#form-container").slideDown("slow", function() {
-            container.hide("slow");
-          });
-        }
+        text: "Show Form"
       });
 
-      //container.append(newElement);
+      container.append(newElement);
       container.append(newButton);
 
       $("#form-container").slideUp("slow", function() {
