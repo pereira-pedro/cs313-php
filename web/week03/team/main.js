@@ -70,7 +70,7 @@ function loadMajors(container) {
       $("<div/>", {
         class: "form-check",
         html: `
-        <input class="form-check-input" type="radio" name="major" value="${val.id} id="major${i}"/>
+        <input class="form-check-input" type="radio" name="major" value="${val.id}" id="major${i}"/>
         <label class="form-check-label" for="major${i}">${val.name}</label>`
       }).appendTo(container);
 
