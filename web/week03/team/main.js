@@ -51,7 +51,7 @@ function submitForm(container) {
 
 function renderValue(value) {
   var buffer = "";
-  if (isArray(value)) {
+  if (Array.isArray(value)) {
     value.forEach(function(key) {
       buffer += `${key}<br/>`;
     });
