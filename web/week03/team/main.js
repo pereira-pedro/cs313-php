@@ -3,7 +3,7 @@
  */
 $(function() {
   loadContinents($("#list-continents"));
-  loadMajor($("#list-continents"));
+  loadMajors($("#list-continents"));
   // this event handles the div 3 visibility using jQuery
   $("#form1").submit(function(event) {
     $("#results-container").hide();
@@ -50,7 +50,7 @@ function submitForm(container) {
 }
 
 function loadMajors(container) {
-  $.getJSON("backend/list-majors.php", function(data) {
+  $.getJSON("../backend/list-majors.php", function(data) {
     var i = 0;
     $.each(data, function(key, val) {
       $("<div/>", {
@@ -66,7 +66,7 @@ function loadMajors(container) {
 }
 
 function loadContinents(container) {
-  $.getJSON("backend/list-continents.php", function(data) {
+  $.getJSON("../backend/list-continents.php", function(data) {
     var i = 0;
     $.each(data, function(key, val) {
       $("<div/>", {
