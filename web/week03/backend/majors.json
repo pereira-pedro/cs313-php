@@ -1,0 +1,18 @@
+[
+    {
+        "id": "CS",
+        "name": "Computer Science"
+    },
+    {
+        "id": "WDD",
+        "name": "Web Design and Development"
+    },
+    {
+        "id": "CIT",
+        "name": "Computer information Technology"
+    },
+    {
+        "id": "CE",
+        "name": "Computer Engineering"
+    }
+]

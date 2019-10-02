@@ -2,6 +2,8 @@
  * This is a shortcut to jQuery ready function. It's called right after DOM is loaded and ready.
  */
 $(function() {
+  loadContinents($("#list-continents"));
+  loadMajor($("#list-continents"));
   // this event handles the div 3 visibility using jQuery
   $("#form1").submit(function(event) {
     $("#results-container").hide();
@@ -39,11 +41,42 @@ function submitForm(container) {
       text: "Show Form",
       click: function() {
         container.hide("slow", function() {
-          $("#form-container").slideDown("slow");  
+          $("#form-container").slideDown("slow");
         });
       }
     });
     container.append(newButton);
+  });
+}
 
+function loadMajors(container) {
+  $.getJSON("backend/list-majors.php", function(data) {
+    var i = 0;
+    $.each(data, function(key, val) {
+      $("<div/>", {
+        class: "form-check",
+        html: `
+        <input class="form-check-input" type="radio" name="major" value="${val.id} id="major${i}"/>
+        <label class="form-check-label" for="major${i}">${val.name}</label>`
+      }).appendTo(container);
+
+      i++;
+    });
+  });
+}
+
+function loadContinents(container) {
+  $.getJSON("backend/list-continents.php", function(data) {
+    var i = 0;
+    $.each(data, function(key, val) {
+      $("<div/>", {
+        class: "form-check",
+        html: `
+        <input class="form-check-input" type="checkbox" value="${val.id}" name="continents[]" id="continent${i}"/>
+        <label class="form-check-label" for="continent${i}">${val.name}</label>`
+      }).appendTo(container);
+
+      i++;
+    });
   });
 }
