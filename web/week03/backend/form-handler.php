@@ -6,7 +6,6 @@ $continents = json_decode(file_get_contents('continents.json'));
 $request_continents = filter_input_array (INPUT_POST, 
 [
     'continents'    => [
-        'filter' => FILTER_VALIDATE_INT,
         'flags'  => FILTER_REQUIRE_ARRAY,
     ]
 ]);
