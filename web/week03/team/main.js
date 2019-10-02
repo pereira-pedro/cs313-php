@@ -28,7 +28,7 @@ function submitForm(container) {
         class: "d-flex justify-content-between"
       })
         .append(`<div class="p-2 font-weight-bold">${key}:</div>`)
-        .append(`<div class="p-2">${Reflect.get(response, key)}</div>`);
+        .append(`<div class="p-2">${renderValue(Reflect.get(response, key))}</div>`);
 
       container.append(newElement);
 
