@@ -5,14 +5,14 @@ $continents = json_decode(file_get_contents('continents.json'));
 
 $request_continents = filter_input_array (INPUT_POST, 
 [
-    'continents'    => [
+    'continents' => [
         'flags'  => FILTER_REQUIRE_ARRAY,
     ]
 ]);
 
 $response_continents = [];
 
-foreach($request_continents as $c)
+foreach($request_continents['continents'] as $c)
 {
     var_dump($c);
     if( in_array($c['id'], $continents) )
