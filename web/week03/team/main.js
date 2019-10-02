@@ -35,7 +35,7 @@ function submitForm(container) {
         }
       });
 
-      container.append(newElement);
+      //container.append(newElement);
       container.append(newButton);
 
       $("#form-container").slideUp("slow", function() {
