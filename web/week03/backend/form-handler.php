@@ -12,18 +12,19 @@ $request_continents = filter_input_array (INPUT_POST,
 
 $response_continents = [];
 $t = array_column($continents, 'id');
-var_dump($t);
 foreach($request_continents['continents'] as $c)
 {
     $key = array_search( $c, $t);
-    var_dump($continents[$key]);
     if( $key !== FALSE )
     {
-        //array_push($response_continents,$continents[$key]['name']);
+        array_push($response_continents,$continents[$key]->name);
     }
 }
-$request_major = filter_input(INPUT_POST, 'major' );
-$response_major = array_search( $request_major, array_column($majors, 'id'));
+ $request_major = filter_input(INPUT_POST, 'major' );
+$key = array_search( $request_major, array_column($majors, 'id'));
+$request_major = $key !== false ? 
+    $response_major = $majors[$key]->name :
+    'Not found';
 
 // get request from POST method and sanitize them
 $response = [
