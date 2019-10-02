@@ -15,6 +15,9 @@ $(function() {
  * This method submits form
  */
 function submitForm(container) {
+  // clear previous content
+  container.empty();
+
   $.post("../backend/form-handler.php", $("#form1").serialize(), function(
     response
   ) {
@@ -22,7 +25,7 @@ function submitForm(container) {
       var newElement = $("<div />", {
         class: "d-flex justify-content-between"
       })
-        .append(`<div class="p-2">${key}</div>`)
+        .append(`<div class="p-2 font-weight-bold">${key}:</div>`)
         .append(`<div class="p-2">${Reflect.get(response, key)}</div>`);
 
       container.append(newElement);
@@ -35,8 +38,8 @@ function submitForm(container) {
       class: "btn btn-primary",
       text: "Show Form",
       click: function() {
-        $("#form-container").slideDown("slow", function() {
-          container.hide("slow");
+        container.hide("slow", function() {
+          $("#form-container").slideDown("slow");  
         });
       }
     });
