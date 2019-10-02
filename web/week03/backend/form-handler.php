@@ -7,6 +7,7 @@ $response = [
     'Name' => filter_input(INPUT_POST, 'name' ),
     'Email' => filter_input(INPUT_POST, 'email' ),
     'Major' => filter_input(INPUT_POST, 'major' ),
+    'Continents' => filter_input(INPUT_POST, 'continents' ),
     'Comments' => filter_input(INPUT_POST, 'comments' )
 ];
 
