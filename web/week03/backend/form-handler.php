@@ -3,12 +3,17 @@
 $majors = json_decode(file_get_contents('majors.json'));
 $continents = json_decode(file_get_contents('continents.json'));
 
-$request_continents = filter_input_array (INPUT_POST, 'continents' );
+$request_continents = filter_input_array (INPUT_POST, 
+[
+    'continents'    => [
+        'filter' => FILTER_VALIDATE_INT,
+        'flags'  => FILTER_REQUIRE_ARRAY,
+    ]
+]);
 
 $response_continents = [];
 var_dump($request_continents);
-var_dump($continents);
-var_dump($majors);
+
 foreach($request_continents as $c)
 {
     if( in_array($c['id'], $continents) )

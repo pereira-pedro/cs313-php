@@ -3,7 +3,7 @@
  */
 $(function() {
   loadContinents($("#list-continents"));
-  loadMajors($("#list-continents"));
+  loadMajors($("#list-major"));
   // this event handles the div 3 visibility using jQuery
   $("#form1").submit(function(event) {
     $("#results-container").hide();
