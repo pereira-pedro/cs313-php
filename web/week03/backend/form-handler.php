@@ -19,7 +19,7 @@ foreach($request_continents['continents'] as $c)
     var_dump(continents[$key]);
     if( $key !== FALSE )
     {
-        array_push($response_continents,$continents[$key]['name']);
+        //array_push($response_continents,$continents[$key]['name']);
     }
 }
 $request_major = filter_input(INPUT_POST, 'major' );
