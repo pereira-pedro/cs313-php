@@ -3,7 +3,9 @@
  */
 $(function() {
   // this event handles the div 3 visibility using jQuery
-  $( "#form1" ).submit(function( event ) {
+  $("#form1").submit(function(event) {
+    $("#results-container").hide();
+
     submitForm($("#results-container"));
     event.preventDefault();
   });
@@ -13,15 +15,21 @@ $(function() {
  * This method submits form
  */
 function submitForm(container) {
-  $.post("../backend/form-handler.php", $("#form1").serialize(), function(response) {
+  $.post("../backend/form-handler.php", $("#form1").serialize(), function(
+    response
+  ) {
     Object.keys(response).forEach(function(key) {
       var newElement = $("<div />", {
         class: "d-flex justify-content-between"
       })
         .append(`<div class="p2">${key}</div>`)
-        .append(`<div class="p2">${key}</div>`);
+        .append(`<div class="p2">${Reflect.get(response, key)}</div>`);
 
       container.append(newElement);
+
+      $("#form-container").slideUp("slow", function() {
+        container.show("slow");
+      });
     });
   });
 }
