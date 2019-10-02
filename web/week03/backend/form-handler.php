@@ -3,7 +3,7 @@
 $majors = json_decode(file_get_contents('majors.json'));
 $continents = json_decode(file_get_contents('continents.json'));
 
-$request_continents = filter_input_array (INPUT_POST, 'continents[]' );
+$request_continents = filter_input_array (INPUT_POST, 'continents' );
 
 $response_continents = [];
 var_dump($request_continents);
