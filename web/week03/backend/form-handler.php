@@ -11,14 +11,16 @@ $request_continents = filter_input_array (INPUT_POST,
 ]);
 
 $response_continents = [];
-
+$t = array_column($continents, 'id');
+var_dump($t);
 foreach($request_continents['continents'] as $c)
 {
     var_dump($c);
-    if( in_array($c['id'], $continents) )
+    array_search( $c, $t);
+/*    if( in_array($c, $continents) )
     {
         array_push($response_continents,$c['name']);
-    }
+    }*/
 }
 $request_major = filter_input(INPUT_POST, 'major' );
 $response_major = array_search( $request_major, array_column($majors, 'id'));
