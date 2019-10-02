@@ -22,8 +22,8 @@ function submitForm(container) {
       var newElement = $("<div />", {
         class: "d-flex justify-content-between"
       })
-        .append(`<div class="p2">${key}</div>`)
-        .append(`<div class="p2">${Reflect.get(response, key)}</div>`);
+        .append(`<div class="p-2">${key}</div>`)
+        .append(`<div class="p-2">${Reflect.get(response, key)}</div>`);
 
       container.append(newElement);
       container.append($('</button>',{
