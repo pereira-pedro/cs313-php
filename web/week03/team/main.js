@@ -26,6 +26,16 @@ function submitForm(container) {
         .append(`<div class="p2">${Reflect.get(response, key)}</div>`);
 
       container.append(newElement);
+      container.append($('</button>',{
+        class: "btn",
+        text: 'Show Form',
+        click: function () {
+          $("#form-container").slideDown("slow", function() {
+            container.hide("slow");
+          });
+        }
+      })
+      );
 
       $("#form-container").slideUp("slow", function() {
         container.show("slow");
