@@ -16,6 +16,7 @@ var_dump($t);
 foreach($request_continents['continents'] as $c)
 {
     $key = array_search( $c, $t);
+    var_dump(continents[$key]);
     if( $key !== FALSE )
     {
         array_push($response_continents,$continents[$key]['name']);
