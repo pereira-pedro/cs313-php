@@ -10,14 +10,17 @@ foreach($c as $continents)
 {
     if( in_array($c['id'], $request_continents) )
     {
-    array_push($response_continents,$c['name']);
+        array_push($response_continents,$c['name']);
     }
 }
+
+$response_major = array_search( filter_input(INPUT_POST, 'major' ), array_column($majors, 'id'));
+
 // get request from POST method and sanitize them
 $response = [
     'Name' => filter_input(INPUT_POST, 'name' ),
     'Email' => filter_input(INPUT_POST, 'email' ),
-    'Major' => filter_input(INPUT_POST, 'major' ),
+    'Major' => $response_major,
     'Continents' => $response_continents,
     'Comments' => filter_input(INPUT_POST, 'comments' )
 ];
