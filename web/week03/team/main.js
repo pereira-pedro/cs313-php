@@ -49,7 +49,21 @@ function submitForm(container) {
   });
 }
 
+function renderValue(value) {
+  var buffer = "";
+  if (isArray(value)) {
+    value.forEach(function(key) {
+      buffer += `${key}<br/>`;
+    });
+  } else {
+    buffer = value;
+  }
+
+  return buffer;
+}
 function loadMajors(container) {
+  container.empty();
+
   $.getJSON("../backend/list-majors.php", function(data) {
     var i = 0;
     $.each(data, function(key, val) {
@@ -66,6 +80,8 @@ function loadMajors(container) {
 }
 
 function loadContinents(container) {
+  container.empty();
+
   $.getJSON("../backend/list-continents.php", function(data) {
     var i = 0;
     $.each(data, function(key, val) {
