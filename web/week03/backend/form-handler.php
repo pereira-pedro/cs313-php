@@ -6,8 +6,8 @@ $continents = json_decode(file_get_contents('continents.json'));
 $request_continents = filter_input(INPUT_POST, 'continents' );
 
 $response_continents = [];
-var_dump(request_continents);
-var_dump(continents);
+var_dump($request_continents);
+var_dump($continents);
 foreach($request_continents as $c)
 {
     if( in_array($c['id'], $continents) )
