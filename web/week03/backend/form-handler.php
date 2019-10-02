@@ -11,10 +11,10 @@ $request_continents = filter_input_array (INPUT_POST,
 ]);
 
 $response_continents = [];
-var_dump($request_continents);
 
 foreach($request_continents as $c)
 {
+    var_dump($c);
     if( in_array($c['id'], $continents) )
     {
         array_push($response_continents,$c['name']);
