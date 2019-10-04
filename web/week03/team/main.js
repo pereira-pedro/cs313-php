@@ -4,7 +4,6 @@
 $(function() {
   loadContinents($("#list-continents"));
   loadMajors($("#list-major"));
-  // this event handles the div 3 visibility using jQuery
   $("#form1").submit(function(event) {
     $("#results-container").hide();
 
@@ -20,7 +19,7 @@ function submitForm(container) {
   // clear previous content
   container.empty();
 
-  $.post("../backend/form-handler.php", $("#form1").serialize(), function(
+  $.post("backend/form-handler.php", $("#form1").serialize(), function(
     response
   ) {
     Object.keys(response).forEach(function(key) {
@@ -49,6 +48,10 @@ function submitForm(container) {
   });
 }
 
+/**
+ * This functions renders value to a scalar or array value
+ * @param {Object} value 
+ */
 function renderValue(value) {
   var buffer = "";
   if (Array.isArray(value)) {
@@ -61,10 +64,15 @@ function renderValue(value) {
 
   return buffer;
 }
+
+/**
+ * This function gets majors using JSON from a pseudo database
+ * @param {Object} container 
+ */
 function loadMajors(container) {
   container.empty();
 
-  $.getJSON("../backend/list-majors.php", function(data) {
+  $.getJSON("backend/list-majors.php", function(data) {
     var i = 0;
     $.each(data, function(key, val) {
       $("<div/>", {
@@ -79,10 +87,14 @@ function loadMajors(container) {
   });
 }
 
+/**
+ * This function gets continents using JSON from a pseudo database
+ * @param {Object} container 
+ */
 function loadContinents(container) {
   container.empty();
 
-  $.getJSON("../backend/list-continents.php", function(data) {
+  $.getJSON("backend/list-continents.php", function(data) {
     var i = 0;
     $.each(data, function(key, val) {
       $("<div/>", {
