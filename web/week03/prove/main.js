@@ -4,7 +4,7 @@ var PRODUCT_TEMPLATE = '';
  * This is a shortcut to jQuery ready function. It's called right after DOM is loaded and ready.
  */
 $(function() {
-  $.get("view/product-card-template.html", function(data) {
+  $.get("product-card-template.html", function(data) {
     PRODUCT_TEMPLATE = data;
 
     // fetch assignments and creates assignments card
