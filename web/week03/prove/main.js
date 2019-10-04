@@ -7,7 +7,7 @@ $(function() {
   $.get("product-card-template.html", function(data) {
     PRODUCT_TEMPLATE = data;
 
-    // fetch assignments and creates assignments card
+    // fetch products and creates products card
     fetchProducts();
   });
 });
@@ -48,10 +48,10 @@ function submitForm(container) {
   });
 }
 /**
- * Fetch assignments and create cards
+ * Fetch products and create cards
  */
 function fetchProducts() {
-  // use jQuery to fetch JSON file with assignments
+  // use jQuery to fetch JSON file with products
 $.getJSON("backend/product-list.php", function(response) {
   var productList = $("#product-list");
 
@@ -64,10 +64,10 @@ $.getJSON("backend/product-list.php", function(response) {
     return;
   }
 
-  // remove previous assignments
+  // remove previous products
   productList.children().remove();
 
-  // iterates through assignments array
+  // iterates through products array
   if (response.data.length > 0) {
     $.each(response.data, function(key, row) {
       createProductCard(productList, row);
@@ -92,8 +92,8 @@ var htmlItem = PRODUCT_TEMPLATE
   .replace(/ID/g, product.id)
   .replace(/TITLE/g, product.title)
   .replace(/PICTURE/g, product.image)
-  .replace(/PRICE/g, assignment.url)
-  .replace(/RATING/g, assignment.due);
+  .replace(/PRICE/g, product.price)
+  .replace(/RATING/g, product.rating);
 
 var newProductCard = $(htmlItem);
 
