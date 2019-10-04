@@ -91,7 +91,7 @@ function createProductCard(container, product) {
 var htmlItem = PRODUCT_TEMPLATE
   .replace(/ID/g, product.id)
   .replace(/TITLE/g, product.title)
-  .replace(/PICTURE/g, product.image)
+  .replace(/PICTURE/g, product.picture)
   .replace(/PRICE/g, product.price)
   .replace(/RATING/g, product.rating);
 
