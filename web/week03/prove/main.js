@@ -100,13 +100,13 @@ function createProductCard(container, product) {
 
   container.append(newProductCard);
 
-  newProductCard.find(".card .btn-primary").click(function() {
+  newProductCard.find(".btn-primary").click(function() {
     var myCard = $(this).closest(".card");
 
     $.post(
       "backend/product-add.php",
       {
-        id: myCard.data('id'),
+        id: myCard.data("id"),
         qty: 1
       },
       function(response) {
