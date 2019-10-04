@@ -99,6 +99,32 @@ function createProductCard(container, product) {
   var newProductCard = $(htmlItem);
 
   container.append(newProductCard);
+
+  newProductCard.find(".card .btn-primary").click(function() {
+    var myCard = $(this).closest(".card");
+
+    $.post(
+      "backend/product-add.php",
+      {
+        id: myCard.data('id'),
+        qty: 1
+      },
+      function(response) {
+        if (response.status === "OK") {
+          myCard.addCard("shaking");
+          setTimeout(function() {
+            myCard.removeClass("shaking");
+          }, 3000);
+        } else {
+          swal({
+            type: "error",
+            title: "Erro",
+            text: `${error.status} ${error.statusText}`
+          });
+        }
+      }
+    );
+  });
 }
 
 /**
