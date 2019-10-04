@@ -1,4 +1,4 @@
-var PRODUCT_TEMPLATE = '';
+var PRODUCT_TEMPLATE = "";
 
 /**
  * This is a shortcut to jQuery ready function. It's called right after DOM is loaded and ready.
@@ -27,7 +27,9 @@ function submitForm(container) {
         class: "d-flex justify-content-between"
       })
         .append(`<div class="p-2 font-weight-bold">${key}:</div>`)
-        .append(`<div class="p-2">${renderValue(Reflect.get(response, key))}</div>`);
+        .append(
+          `<div class="p-2">${renderValue(Reflect.get(response, key))}</div>`
+        );
 
       container.append(newElement);
 
@@ -52,70 +54,63 @@ function submitForm(container) {
  */
 function fetchProducts() {
   // use jQuery to fetch JSON file with products
-$.getJSON("backend/product-list.php", function(response) {
-  var productList = $("#product-list");
+  $.getJSON("backend/product-list.php", function(response) {
+    var productList = $("#product-list");
 
-  if (response.status !== "OK") {
+    if (response.status !== "OK") {
+      swal({
+        type: "error",
+        title: "Error",
+        text: response.message
+      });
+      return;
+    }
+
+    // remove previous products
+    productList.children().remove();
+
+    // iterates through products array
+    if (response.data.length > 0) {
+      $.each(response.data, function(key, row) {
+        createProductCard(productList, row);
+      });
+    }
+  }).fail(function(error) {
     swal({
       type: "error",
-      title: "Error",
-      text: response.message
+      title: "Erro",
+      text: `${error.status} ${error.statusText}`
     });
-    return;
-  }
-
-  // remove previous products
-  productList.children().remove();
-
-  // iterates through products array
-  if (response.data.length > 0) {
-    $.each(response.data, function(key, row) {
-      createProductCard(productList, row);
-    });
-  }
-}).fail(function(error) {
-  swal({
-    type: "error",
-    title: "Erro",
-    text: `${error.status} ${error.statusText}`
   });
-});
 }
 
 /**
-* Creates an DOM object based on object and partial HTML data
-* @param {Object} container 
-* @param {Object} assignment 
-*/
+ * Creates an DOM object based on object and partial HTML data
+ * @param {Object} container
+ * @param {Object} assignment
+ */
 function createProductCard(container, product) {
-var htmlItem = PRODUCT_TEMPLATE
-  .replace(/ID/g, product.id)
-  .replace(/TITLE/g, product.title)
-  .replace(/PICTURE/g, product.picture)
-  .replace(/PRICE/g, product.price)
-  .replace(/RATING/g, product.rating);
+  var htmlItem = PRODUCT_TEMPLATE.replace(/ID/g, product.id)
+    .replace(/TITLE/g, product.title)
+    .replace(/PICTURE/g, product.picture)
+    .replace(/PRICE/g, product.price)
+    .replace(/RATING/g, renderRating(product.rating));
 
-var newProductCard = $(htmlItem);
+  var newProductCard = $(htmlItem);
 
-container.append(newProductCard);
+  container.append(newProductCard);
 }
 
 /**
-* Render a status badge for current assignment status
-* @param {String} status 
-*/
-function renderStatus(status) {
-var cssClass = "";
-switch (status.toUpperCase()) {
-  case "PENDING":
-    cssClass = "danger";
-    break;
-  case "DONE":
-    cssClass = "success";
-    break;
-  case "WORKING":
-    cssClass = "warning";
-}
+ * Render a rating to the product
+ * @param {Int} rating
+ */
+function renderRating(rating) {
+  var html = "";
 
-return `<span class="badge badge-${cssClass}">${status}</span>`;
+  for (i = 0; i < 5; i++) {
+    html += `<span class="fa fa-star ${i < rating ? "checked" : ""}"></span>`;
+  }
+
+  return html;
 }

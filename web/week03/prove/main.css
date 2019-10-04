@@ -11,3 +11,11 @@
     height: 120px;
     width: 120px;
   }
+
+  .fa {
+    font-size: 25px;
+  }
+
+  .checked {
+    color: #ab000d;
+  }
