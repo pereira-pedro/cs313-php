@@ -111,7 +111,7 @@ function createProductCard(container, product) {
       },
       function(response) {
         if (response.status === "OK") {
-          myCard.addCard("shaking");
+          myCard.addClass("shaking");
           setTimeout(function() {
             myCard.removeClass("shaking");
           }, 3000);
