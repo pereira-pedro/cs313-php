@@ -52,7 +52,7 @@ function submitForm(container) {
  */
 function fetchProducts() {
   // use jQuery to fetch JSON file with assignments
-$.getJSON("backend/products.json", function(response) {
+$.getJSON("backend/list-product.json", function(response) {
   var productList = $("#product-list");
 
   if (response.status !== "OK") {
