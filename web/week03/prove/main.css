@@ -6,3 +6,8 @@
     background-position: center;
     background-repeat: no-repeat;
   }
+
+  .product-image-card {
+    height: 120px;
+    width: 120px;
+  }
