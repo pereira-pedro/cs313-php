@@ -17,8 +17,8 @@ if ($status === 'OK') {
 
     $cart = isset($_SESSION['cart']) ?
         $_SESSION['cart'] : [
-            id => uniqid(),
-            items => []
+            'id' => uniqid(),
+            'items' => []
         ];
 
     // search if product already exists in cart
@@ -34,10 +34,10 @@ if ($status === 'OK') {
         }
     } else {
         array_push($cart['items'], [
-            id => $id,
-            qty => $qty,
-            price => $product['price'],
-            title => $product['title']
+            'id' => $id,
+            'qty' => $qty,
+            'price' => $product['price'],
+            'title' => $product['title']
         ]);
     }
     $_SESSION['cart'] = $cart;

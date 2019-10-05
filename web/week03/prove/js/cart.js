@@ -37,9 +37,11 @@ function showCart() {
         showCartDetails(cartList, row);
       });
       $("#cart-items-num").html(response.data.items);
-      $("#cart-items-total").html(response.data.total);
+      $("#cart-items-total").html(formatter.format(response.data.total));
     } else {
       cartList.append($(`<div class="text-muted">Your cart is empty.</div>`));
+      $("#cart-items-num").html("");
+      $("#cart-items-total").html("");
     }
   }).fail(function(error) {
     swal({

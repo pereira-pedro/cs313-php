@@ -1,4 +1,8 @@
 var PRODUCT_TEMPLATE = "";
+var formatter = new Intl.NumberFormat("en-US", {
+  style: "currency",
+  currency: "USD"
+});
 
 /**
  * This is a shortcut to jQuery ready function. It's called right after DOM is loaded and ready.
@@ -58,7 +62,7 @@ function createProductCard(container, product) {
   var htmlItem = PRODUCT_TEMPLATE.replace(/ID/g, product.id)
     .replace(/TITLE/g, product.title)
     .replace(/PICTURE/g, product.picture)
-    .replace(/PRICE/g, product.price)
+    .replace(/PRICE/g, formatter.format(product.price))
     .replace(/RATING/g, renderRating(product.rating));
 
   var newProductCard = $(htmlItem);
