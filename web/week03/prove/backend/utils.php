@@ -30,5 +30,7 @@ function getProduct($id)
 
 function findProductInCart($id, $cart)
 {
+    var_dump(array_column($cart, 'id'));
+    var_dump(array_search($id, array_column($cart, 'id')));
     return array_search($id, array_column($cart, 'id'));
 }

@@ -29,7 +29,7 @@ if ($status === 'OK') {
     $productIndex = findProductInCart($id, $cart);
 
     if ($productIndex !== 0) {
-        $cart['items'][$key]['qty'] += $qty;
+        $cart['items'][$productIndex]['qty'] += $qty;
     } else {
         array_push($cart['items'], [
             id => $id,
