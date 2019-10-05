@@ -58,8 +58,24 @@
         </p>
       </div>
       <div class="container">
-        <div class="row">
-          <ul id="cart-list" class="list-group list-group-flush"></ul>
+        <div class="row table-responsive">
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th scope="col">Product</th>
+                <th scope="col" class="text-center">Quantity</th>
+                <th scope="col" class="text-right">Price</th>
+                <th scope="col" class="text-right">Sub-Total</th>
+              </tr>
+            </thead>
+            <tbody id="cart-list"></tbody>
+            <tfoot>
+              <tr>
+                <th>Total</th>
+                <th colspan="3" class="cart-total"></th>
+              </tr>
+            </tfoot>
+          </table>
         </div>
       </div>
       <div class="container">

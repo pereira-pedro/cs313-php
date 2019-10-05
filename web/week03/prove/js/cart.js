@@ -50,17 +50,16 @@ function showCart() {
  * @param {Object} cart
  */
 function showCartDetails(container, cartItem) {
-  var newCartItem = $("<li/>", {
-    class: "list-group-item"
-  });
+  var newCartItem = $("<tr/>");
 
   newCartItem.append(
-    `<div class="d-flex justify-content-between mb-3">
-        <div class="p-2">${cartItem.title}</div>
-        <div class="p-2">${cartItem.qty}</div>
-        <div class="p-2">${cartItem.price}</div>
-        <div class="p-2">${cartItem.qty * cartItem.price}</div>
-    </div>`
+    `<td class="p-2">${cartItem.title}</td>
+     <td class="p-2 text-center"><input type="text" class="form-control form-control-sm" value="${
+       cartItem.qty
+     }"></td>
+     <td class="p-2 text-right">${cartItem.price}</td>
+     <td class="p-2 text-right">${cartItem.qty * cartItem.price}</td>
+    `
   );
 
   container.append(newCartItem);
