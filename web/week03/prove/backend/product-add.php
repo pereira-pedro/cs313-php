@@ -23,7 +23,7 @@ if ($status === 'OK') {
         ];
 
     // search if product already exists in cart
-    $productIndex = array_search($id, array_column($cart['items'], 'id', true));
+    $productIndex = array_search($id, array_column($cart['items'], 'id'));
 
     // if exists update quantity
     if ($productIndex === false) {
