@@ -93,7 +93,7 @@ function createProductCard(container, product) {
             response.data.description.subtitle
           );
           $("#form-product-description .modal-footer .btn-primary")
-            .off( "click", "**" );
+            .off("click", "**")
             .html(
               `Add to cart <i>(${formatter.format(response.data.price)})</i>`
             )
