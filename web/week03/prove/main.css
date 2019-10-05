@@ -1,12 +1,6 @@
-.master-head {
-  height: 100vh;
-  min-height: 500px;
-  background-image: url("../images/olivier-miche-OZACaaUskhg-unsplash.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+.top-header {
+  background-color: #d3212d;
 }
-
 .product-image-card {
   height: 120px;
   width: 120px;
@@ -17,7 +11,7 @@
 }
 
 .checked {
-  color: #ab000d;
+  color: #d3212d;
 }
 
 .shaking {
