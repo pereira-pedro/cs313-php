@@ -10,7 +10,7 @@ echo json_encode([
     message => '',
     data => [
         cart => $cart,
-        itens => orderNumItems($cart),
+        items => orderNumItems($cart),
         total => orderValue($cart)
     ]
 ]);
