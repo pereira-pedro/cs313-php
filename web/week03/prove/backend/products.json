@@ -51,5 +51,39 @@
     "price": "53.99",
     "rating": 5,
     "picture": "http://evening-tor-76340.herokuapp.com/week03/prove/images/sp38714645_sc7.jpg"
+  },
+  {
+    "id": 4,
+    "title": "Scott Choose-A-Sheet Kitchen Roll Paper Towels, 1-Ply, 102 Sheets/Roll, 15 Rolls/Pack (36371)",
+    "description": {
+      "title": "Stock up with this 15-pack of Scott Choose-A-Sheet white paper towels to clean up even the messiest spills.",
+      "subtitle": "Keep these one-ply paper towels handy to mop up almost any kind of spill. These Scott paper towels have unique ridges for increased durability and performance, and handy perforations make sure you use only what you need for the job at hand.",
+      "details": [
+        "Kitchen roll towels for drying hands or cleaning up messes",
+        "102 sheets per roll, 15 rolls per pack (1530 sheets total)",
+        "1-ply thickness",
+        "White sheets look clean and sanitary"
+      ]
+    },
+    "price": "15.79",
+    "rating": 5,
+    "picture": "http://evening-tor-76340.herokuapp.com/week03/prove/images/sp42717048_sc7.jpg"
+  },
+  {
+    "id": 5,
+    "title": "Dixie Pathways Medium-Weight Paper Plates, 8.5\", 125/Pack (DXEUX9WSPK)",
+    "description": {
+      "title": "Dixie Pathways paper plates help make cleanup after entertaining simple",
+      "subtitle": "Make cleanup simple when the party ends using these Dixie Pathways paper plates. The 8-1/2-inch plates provide ample room for servings of your favorite dishes, and the medium weight ensures they stand strong against liquids and heavier food while resisting cuts. A stylish leaf design on each plate gives your gathering a touch of class, and these plates can be microwaved for simple reheating when necessary. Each pack comes with 125 plates, giving you an ample supply for virtually any entertainment setting.",
+      "details": [
+        "Elegant white background with a stylish leaf design on one side",
+        "Features an 8-1/2-inch diameter size that holds ample amounts of food",
+        "Comes in a pack of 125 for simple stocking",
+        "Microwave-safe for easy reheating"
+      ]
+    },
+    "price": "11.79",
+    "rating": 3,
+    "picture": "http://evening-tor-76340.herokuapp.com/week03/prove/images/s0425613_sc7.jpg"
   }
 ]

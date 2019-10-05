@@ -76,7 +76,7 @@ function showCartDetails(container, cartItem) {
      <td class="p-2 text-right">${formatter.format(cartItem.price)}</td>
      <td class="p-2 text-right">${formatter.format(
        cartItem.qty * cartItem.price
-     )}<i data-id="${cartItem.id}"class="fa fa-trash remove-item"></i></td>
+     )}<i data-id="${cartItem.id}"class="fa fa-trash remove-item ml-1"></i></td>
     `
   );
 
@@ -89,8 +89,8 @@ function showCartDetails(container, cartItem) {
   });
 
   // remove item from cart
-  newCartItem.find(".fa-trash").click(function() {
-    updateCart($(this).data("id"), $(this).val(), false);
+  newCartItem.find(".remove-item").click(function() {
+    updateCart($(this).data("id"), 0, false);
   });
 }
 
