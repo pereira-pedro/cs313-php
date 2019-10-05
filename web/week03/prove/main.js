@@ -78,7 +78,7 @@ function fetchProducts() {
   }).fail(function(error) {
     swal({
       type: "error",
-      title: "Erro",
+      title: "Error",
       text: `${error.status} ${error.statusText}`
     });
   });
@@ -114,11 +114,12 @@ function createProductCard(container, product) {
           myCard.addClass("shaking");
           setTimeout(function() {
             myCard.removeClass("shaking");
-          }, 3000);
+          }, 1000);
+          $("#cart-items").val(response.data);
         } else {
           swal({
             type: "error",
-            title: "Erro",
+            title: "Error",
             text: `${error.status} ${error.statusText}`
           });
         }

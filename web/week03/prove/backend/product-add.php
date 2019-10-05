@@ -1,4 +1,5 @@
 <?php
+include_once 'utils.php';
 session_start();
 $id = filter_input(INPUT_POST, 'id', FILTER_VALIDATE_INT);
 $qty = filter_input(INPUT_POST, 'qty', FILTER_VALIDATE_INT);
@@ -16,14 +17,26 @@ if ($id === 0) {
 }
 
 if ($status === 'OK') {
-    $_SESSION["product-id"] = $id;
-    $_SESSION["product-qdy"] = $qty;
-    $_SESSION["order-id"] = uniqid();
+
+    $cart = isset($_SESSION['cart']) ?
+        $_SESSION['cart'] : [
+            id => uniqid(),
+            items => []
+        ];
+
+    array_push($cart['items'], [
+        id => $id,
+        qty => $qty
+    ]);
+
+    $_SESSION['cart'] = $cart;
 }
 
 $response = [
     'status' => $status,
-    'message' => $message
+    'message' => $message,
+    'data' => itemsInCart($_SESSION['cart'])
 ];
+
 header('Content-Type: application/json');
 echo json_encode($response);
