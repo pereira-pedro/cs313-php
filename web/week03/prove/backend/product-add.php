@@ -23,28 +23,28 @@ if ($status === 'OK') {
         ];
 
     // search if product already exists in cart
-    $productIndex = array_search($id, array_column($cart['items'], 'id'));
-    var_dump(array_column($cart['items'], 'id'));
-    echo "productIndex: $productIndex";
+    $productIndex = array_search($id, array_column($cart['items'], 'id', true));
+
     // if not exists update quantity
-    if ($productIndex !== false) {
-        // remove if qty is 0
-        if ($qty !== 0) {
-            $cart['items'][$productIndex]['qty'] += $qty;
-        } else {
-            if (count($cart['items']) === 1) {
-                unset($cart);
-            } else {
-                unset($cart['items'][$productIndex]);
-            }
-        }
-    } else {
+    if ($productIndex === false) {
         array_push($cart['items'], [
             'id' => $id,
             'qty' => $qty,
             'price' => $product['price'],
             'title' => $product['title']
         ]);
+    } else {
+        // remove if qty is 0
+        if ($qty !== 0) {
+            $cart['items'][$productIndex]['qty'] += $qty;
+        } else {
+            unset($cart['items'][$productIndex]);
+        }
+    }
+
+    if (count($cart['items']) === 0) {
+        unset($cart);
+        unset($_SESSION['cart']);
     }
 
     if (isset($cart)) {
