@@ -3,6 +3,7 @@ include_once 'utils.php';
 session_start();
 $id = filter_input(INPUT_POST, 'id', FILTER_VALIDATE_INT);
 $qty = filter_input(INPUT_POST, 'qty', FILTER_VALIDATE_INT);
+$update = filter_input(INPUT_POST, 'update', FILTER_VALIDATE_BOOLEAN);
 
 $status = 'OK';
 $message = '';
@@ -25,7 +26,7 @@ if ($status === 'OK') {
     // search if product already exists in cart
     $productIndex = array_search($id, array_column($cart['items'], 'id'));
 
-    // if exists update quantity
+    // add item if not exists
     if ($productIndex === false) {
         array_push($cart['items'], [
             'id' => $id,
@@ -36,7 +37,12 @@ if ($status === 'OK') {
     } else {
         // remove if qty is 0
         if ($qty !== 0) {
-            $cart['items'][$productIndex]['qty'] += $qty;
+            // user is adding quantity
+            if ($update) {
+                $cart['items'][$productIndex]['qty'] = $qty;
+            } else {
+                $cart['items'][$productIndex]['qty'] += $qty;
+            }
         } else {
             if (count($cart['items']) > 1) {
                 unset($cart['items'][$productIndex]);

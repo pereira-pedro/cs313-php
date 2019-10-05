@@ -79,7 +79,8 @@ function showCartDetails(container, cartItem) {
       "backend/product-add.php",
       {
         id: $(this).data("id"),
-        qty: $(this).val()
+        qty: $(this).val(),
+        update: true
       },
       function(response) {
         if (response.status === "OK") {
