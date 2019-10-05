@@ -1,6 +1,10 @@
 /**
  * This is a shortcut to jQuery ready function. It's called right after DOM is loaded and ready.
  */
+var formatter = new Intl.NumberFormat("en-US", {
+  style: "currency",
+  currency: "USD"
+});
 
 $(function() {
   // fetch products and creates products card
@@ -59,10 +63,10 @@ function showCartDetails(container, cartItem) {
      <td class="p-2 text-center"><input type="text" class="form-control form-control-sm" value="${
        cartItem.qty
      }" data-id="${cartItem.id}"></td>
-     <td class="p-2 text-right">${cartItem.price}</td>
-     <td class="p-2 text-right">${cartItem.qty * cartItem.price}<i data-id="${
-      cartItem.id
-    }"class="fas fa-trash-alt"></i></td>
+     <td class="p-2 text-right">${formatter.format(cartItem.price)}</td>
+     <td class="p-2 text-right">${formatter.format(
+       cartItem.qty * cartItem.price
+     )}<i data-id="${cartItem.id}"class="fas fa-trash-alt"></i></td>
     `
   );
 
