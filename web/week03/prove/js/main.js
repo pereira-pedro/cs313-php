@@ -72,7 +72,7 @@ function createProductCard(container, product) {
   newProductCard.find(".btn-primary").click(function() {
     var myCard = $(this).closest(".card");
 
-    addToCart(myCard.data("id"), myCard.find("input").val());
+    addToCart(myCard, myCard.find("input").val());
   });
 
   newProductCard.find(".card-title a").click(function() {
@@ -98,7 +98,8 @@ function createProductCard(container, product) {
             )
             .click(function() {
               $("#form-product-description").modal("hide");
-              addToCart(response.data.id, 1);
+              var myCard = $(this).closest(".card");
+              addToCart(myCard, 1);
             });
 
           var listContainer = $("#form-product-description .list-group");
@@ -133,12 +134,11 @@ function renderRating(rating) {
   return html;
 }
 
-function addToCart(id, qty) {
-  var myCard = $(`div[data-id="${id}"]`);
+function addToCart(myCard, qty) {
   $.post(
     "backend/product-add.php",
     {
-      id: id,
+      id: myCard.data("id"),
       qty: qty
     },
     function(response) {

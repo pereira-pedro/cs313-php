@@ -68,7 +68,7 @@ function showCartDetails(container, cartItem) {
      <td class="p-2 text-right">${formatter.format(cartItem.price)}</td>
      <td class="p-2 text-right">${formatter.format(
        cartItem.qty * cartItem.price
-     )}<i data-id="${cartItem.id}"class="fas fa-trash-alt"></i></td>
+     )}<i data-id="${cartItem.id}"class="fa fa-trash-alt"></i></td>
     `
   );
 
