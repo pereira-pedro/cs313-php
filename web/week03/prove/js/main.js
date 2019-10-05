@@ -134,6 +134,11 @@ function renderRating(rating) {
   return html;
 }
 
+/**
+ * This function adds an item to cart
+ * @param {Object} myCard
+ * @param Umber} qty
+ */
 function addToCart(myCard, qty) {
   $.post(
     "backend/product-add.php",

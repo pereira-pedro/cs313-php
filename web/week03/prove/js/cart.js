@@ -1,16 +1,19 @@
 /**
- * This is a shortcut to jQuery ready function. It's called right after DOM is loaded and ready.
+ * A formatter to currency
  */
 var formatter = new Intl.NumberFormat("en-US", {
   style: "currency",
   currency: "USD"
 });
-
+/**
+ * This is a shortcut to jQuery ready function. It's called right after DOM is loaded and ready.
+ */
 $(function() {
   // fetch products and creates products card
   showCart();
 
-  $("#proceed-checkout").click(function() {
+  // shows a form checkout as a modal
+  $(".proceed-checkout").click(function() {
     $("#form-cart-checkout").modal("show");
   });
 });
@@ -23,6 +26,7 @@ function showCart() {
   $.getJSON("backend/cart-list.php", function(response) {
     var cartList = $("#cart-list");
 
+    // an error found
     if (response.status !== "OK") {
       swal({
         type: "error",
@@ -57,7 +61,7 @@ function showCart() {
 }
 
 /**
- * Creates an DOM object based on object and partial HTML data
+ * Creates an DOM object based on object
  * @param {Object} container
  * @param {Object} cart
  */
@@ -76,48 +80,46 @@ function showCartDetails(container, cartItem) {
     `
   );
 
+  // appends new object to DOM
   container.append(newCartItem);
 
+  // change quantity
   newCartItem.find("input").change(function() {
-    $.post(
-      "backend/product-add.php",
-      {
-        id: $(this).data("id"),
-        qty: $(this).val(),
-        update: true
-      },
-      function(response) {
-        if (response.status === "OK") {
-          showCart();
-        } else {
-          swal({
-            type: "error",
-            title: "Error",
-            text: `${error.status} ${error.statusText}`
-          });
-        }
-      }
-    );
+    updateCart($(this).data("id"), $(this).val(), true);
   });
 
+  // remove item from cart
   newCartItem.find(".fa-trash").click(function() {
-    $.post(
-      "backend/product-add.php",
-      {
-        id: $(this).data("id"),
-        qty: 0
-      },
-      function(response) {
-        if (response.status === "OK") {
-          showCart();
-        } else {
-          swal({
-            type: "error",
-            title: "Error",
-            text: `${error.status} ${error.statusText}`
-          });
-        }
-      }
-    );
+    updateCart($(this).data("id"), $(this).val(), false);
   });
+}
+
+/**
+ * This function updates cart in session
+ * @param {Number} id
+ * @param {Number} qty
+ * @param {Boolean} update
+ */
+function updateCart(id, qty, update) {
+  // call backup to update session
+  $.post(
+    "backend/product-add.php",
+    {
+      id: id,
+      qty: qty,
+      update: update
+    },
+    function(response) {
+      // show new cart if it's ok
+      if (response.status === "OK") {
+        showCart();
+      } else {
+        swal({
+          type: "error",
+          title: "Error",
+          text: `${error.status} ${error.statusText}`
+        });
+      }
+    }
+  );
 }
