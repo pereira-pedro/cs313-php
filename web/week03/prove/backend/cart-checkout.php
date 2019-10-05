@@ -29,7 +29,7 @@ unset($_SESSION['cart']);
 <body>
     <!-- Navigation -->
     <nav class="navbar navbar-light navbar-expand-lg top-header">
-        <a class="navbar-brand" href="index.html"><img src="images/logo.svg" width="150" height="50" /></a>
+        <a class="navbar-brand" href="index.html"><img src="../images/logo.svg" width="150" height="50" /></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
             aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -98,9 +98,10 @@ unset($_SESSION['cart']);
                 <?php echo $zip ?>
             </div>
         </div>
-        <div class="container">
-            <a href="../index.html">Continue Shopping</a>
-        </div>
+        <div class="container-fluid py-3">
+            <a href="../index.html" class="btn btn-primary m-2">
+                Continue Shopping
+            </a>
         </div>
     </section>
 </body>
