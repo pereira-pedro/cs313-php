@@ -72,8 +72,7 @@ function createProductCard(container, product) {
       "backend/product-add.php",
       {
         id: myCard.data("id"),
-        qty: myCard.find("input").val(),
-        price: myCard.find(".price").html()
+        qty: myCard.find("input").val()
       },
       function(response) {
         if (response.status === "OK") {
