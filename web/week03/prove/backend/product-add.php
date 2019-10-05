@@ -5,6 +5,7 @@ $id = filter_input(INPUT_POST, 'id', FILTER_VALIDATE_INT);
 $qty = filter_input(INPUT_POST, 'qty', FILTER_VALIDATE_INT);
 
 $status = 'OK';
+$message = '';
 
 if ($id === 0) {
     $status = 'FAIL';
