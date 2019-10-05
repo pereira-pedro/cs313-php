@@ -6,19 +6,14 @@ $qty = filter_input(INPUT_POST, 'qty', FILTER_VALIDATE_INT);
 
 $status = 'OK';
 
-if ($status === 'OK' && $id === 0) {
+if ($id === 0) {
     $status = 'FAIL';
     $message = 'Invalid product.';
 }
 
-if ($status === 'OK' && $qty === 0) {
-    $status = 'FAIL';
-    $message = 'Invalid product quantity.';
-}
-
-$product = getProduct($id);
-
 if ($status === 'OK') {
+
+    $product = getProduct($id);
 
     $cart = isset($_SESSION['cart']) ?
         $_SESSION['cart'] : [
@@ -31,7 +26,12 @@ if ($status === 'OK') {
 
     // if not exists update quantity
     if ($productIndex !== false) {
-        $cart['items'][$productIndex]['qty'] += $qty;
+        // remove if qty is 0
+        if ($qty !== 0) {
+            $cart['items'][$productIndex]['qty'] += $qty;
+        } else {
+            unset($cart['items'][$productIndex]);
+        }
     } else {
         array_push($cart['items'], [
             id => $id,

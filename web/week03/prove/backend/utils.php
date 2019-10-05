@@ -15,6 +15,8 @@ function orderValue($cart)
     foreach ($cart['items'] as $c) {
         $total += $c['qty'] * $c['price'];
     }
+
+    return $total;
 }
 
 function getProduct($id)

@@ -58,11 +58,55 @@ function showCartDetails(container, cartItem) {
     `<td class="p-2">${cartItem.title}</td>
      <td class="p-2 text-center"><input type="text" class="form-control form-control-sm" value="${
        cartItem.qty
-     }"></td>
+     }" data-id="${cartItem.id}"></td>
      <td class="p-2 text-right">${cartItem.price}</td>
-     <td class="p-2 text-right">${cartItem.qty * cartItem.price}</td>
+     <td class="p-2 text-right">${cartItem.qty * cartItem.price}<i data-id="${
+      cartItem.id
+    }"class="fas fa-trash-alt"></i></td>
     `
   );
 
   container.append(newCartItem);
+
+  newCartItem.find("input").change(function() {
+    $.post(
+      "backend/product-add.php",
+      {
+        id: $(this).data("id"),
+        qty: $(this).val()
+      },
+      function(response) {
+        if (response.status === "OK") {
+          showCart();
+        } else {
+          swal({
+            type: "error",
+            title: "Error",
+            text: `${error.status} ${error.statusText}`
+          });
+        }
+      }
+    );
+  });
+
+  newCartItem.find(".fa-trash-alt").click(function() {
+    $.post(
+      "backend/product-add.php",
+      {
+        id: $(this).data("id"),
+        qty: 0
+      },
+      function(response) {
+        if (response.status === "OK") {
+          showCart();
+        } else {
+          swal({
+            type: "error",
+            title: "Error",
+            text: `${error.status} ${error.statusText}`
+          });
+        }
+      }
+    );
+  });
 }
