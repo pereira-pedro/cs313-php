@@ -103,6 +103,7 @@ function createProductCard(container, product) {
             });
 
           var listContainer = $("#form-product-description .list-group");
+          listContainer.empty();
           $.each(response.data.description.details, function(key, row) {
             listContainer.append($(`<li class="list-group-item">${row}</li>`));
           });
