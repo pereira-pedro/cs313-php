@@ -1,6 +1,6 @@
 <?php
 session_start();
-
+include_once 'utils.php';
 $cart = $_SESSION['cart'];
 
 // Get the contents of the JSON file 
