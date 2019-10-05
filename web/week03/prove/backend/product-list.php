@@ -14,7 +14,11 @@ $products = [
     'message' => '',
     'data' => [
         'products' => $data,
-        'cart' => $cart
+        'cart' => [
+            cart => $cart,
+            items => orderNumItems($cart),
+            total => orderValue($cart)
+        ]
     ]
 ];
 
