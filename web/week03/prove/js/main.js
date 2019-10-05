@@ -71,9 +71,7 @@ function createProductCard(container, product) {
       {
         id: myCard.data("id"),
         qty: 1,
-        price: $(this)
-          .find(".price")
-          .html()
+        price: myCard.find(".price").html()
       },
       function(response) {
         if (response.status === "OK") {
