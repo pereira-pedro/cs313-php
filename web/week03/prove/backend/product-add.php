@@ -42,25 +42,17 @@ if ($status === 'OK') {
         }
     }
 
-    if (count($cart['items']) === 0) {
-        unset($cart);
-        unset($_SESSION['cart']);
-    }
-
-    if (isset($cart)) {
-        $_SESSION['cart'] = $cart;
-    }
+    $_SESSION['cart'] = $cart;
 }
 
 $response = [
     'status' => $status,
     'message' => $message,
     'data' => [
-        cart => $_SESSION['cart'],
-        items => orderNumItems($_SESSION['cart']),
-        total => orderValue($_SESSION['cart'])
-    ],
-    'orig' => $cart
+        'cart' => $_SESSION['cart'],
+        'items' => orderNumItems($_SESSION['cart']),
+        'total' => orderValue($_SESSION['cart'])
+    ]
 ];
 
 header('Content-Type: application/json');
