@@ -27,9 +27,9 @@ function showCart() {
     // remove previous cart
     cartList.children().remove();
 
-    // iterates through products array
-    if (response.data.length > 0) {
-      $.each(response.data, function(key, row) {
+    // iterates through cart array
+    if (response.data.cart.items.length > 0) {
+      $.each(response.data.cart.items, function(key, row) {
         showCartDetails(cartList, row);
       });
     }

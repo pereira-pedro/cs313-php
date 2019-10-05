@@ -29,7 +29,7 @@ if ($status === 'OK') {
     array_push($cart['items'], [
         id => $id,
         qty => $qty,
-        price => $price,
+        price => $product['price'],
         title => $product['title']
     ]);
 
