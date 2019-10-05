@@ -3,7 +3,6 @@ include_once 'utils.php';
 session_start();
 $id = filter_input(INPUT_POST, 'id', FILTER_VALIDATE_INT);
 $qty = filter_input(INPUT_POST, 'qty', FILTER_VALIDATE_INT);
-$price = filter_input(INPUT_POST, 'price', FILTER_VALIDATE_FLOAT);
 
 $status = 'OK';
 
@@ -17,10 +16,7 @@ if ($status === 'OK' && $qty === 0) {
     $message = 'Invalid product quantity.';
 }
 
-if ($status === 'OK' && $price === 0) {
-    $status = 'FAIL';
-    $message = 'Invalid product price.';
-}
+$product = getProduct($id);
 
 if ($status === 'OK') {
 
@@ -33,7 +29,8 @@ if ($status === 'OK') {
     array_push($cart['items'], [
         id => $id,
         qty => $qty,
-        price => $price
+        price => $price,
+        title => $product['title']
     ]);
 
     $_SESSION['cart'] = $cart;

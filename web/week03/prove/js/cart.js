@@ -1,6 +1,7 @@
 /**
  * This is a shortcut to jQuery ready function. It's called right after DOM is loaded and ready.
  */
+
 $(function() {
   // fetch products and creates products card
   showCart();
@@ -10,9 +11,9 @@ $(function() {
  * Show cart
  */
 function showCart() {
-  // use jQuery to fetch JSON file with products
+  // use jQuery to fetch JSON file with cart
   $.getJSON("backend/cart-list.php", function(response) {
-    var productList = $("#product-list");
+    var cartList = $("#cart-list");
 
     if (response.status !== "OK") {
       swal({
@@ -23,13 +24,13 @@ function showCart() {
       return;
     }
 
-    // remove previous products
-    productList.children().remove();
+    // remove previous cart
+    cartList.children().remove();
 
     // iterates through products array
     if (response.data.length > 0) {
       $.each(response.data, function(key, row) {
-        createProductCard(productList, row);
+        showCartDetails(cartList, row);
       });
     }
   }).fail(function(error) {
@@ -39,4 +40,26 @@ function showCart() {
       text: `${error.status} ${error.statusText}`
     });
   });
+}
+
+/**
+ * Creates an DOM object based on object and partial HTML data
+ * @param {Object} container
+ * @param {Object} cart
+ */
+function showCartDetails(container, cartItem) {
+  var newCartItem = $("<li/>", {
+    class: "list-group-item"
+  });
+
+  newCartItem.append(
+    `<div class="d-flex flex-row mb-3">
+        <div class="p-2">${cartItem.title}</div>
+        <div class="p-2">${cartItem.qty}</div>
+        <div class="p-2">${cartItem.price}</div>
+        <div class="p-2">${cartItem.qty * cartItem.price}</div>
+    </div>`
+  );
+
+  container.append(newCartItem);
 }
