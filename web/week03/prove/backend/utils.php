@@ -2,6 +2,7 @@
 function orderNumItems($cart)
 {
     $total = 0;
+    var_dump($cart['items']);
     foreach ($cart['items'] as $c) {
         $total += $c['qty'];
     }
