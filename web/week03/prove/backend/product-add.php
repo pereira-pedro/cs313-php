@@ -52,7 +52,8 @@ $response = [
         'cart' => $_SESSION['cart'],
         'items' => orderNumItems($_SESSION['cart']),
         'total' => orderValue($_SESSION['cart'])
-    ]
+    ],
+    'pi' => $productIndex
 ];
 
 header('Content-Type: application/json');
