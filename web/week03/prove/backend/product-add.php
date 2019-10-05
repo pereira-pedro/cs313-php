@@ -26,8 +26,11 @@ if ($status === 'OK') {
             items => []
         ];
 
-    $productIndex = findProductInCart($id, $cart);
+    // search if product already exists in cart
+    $productIndex = array_search($id, array_column($cart['items'], 'id'));
     var_dump($productIndex);
+
+    // if not exists update quantity
     if ($productIndex !== false) {
         var_dump($cart['items'][$productIndex]);
         $cart['items'][$productIndex]['qty'] += $qty;
