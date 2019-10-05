@@ -70,7 +70,10 @@ function createProductCard(container, product) {
       "backend/product-add.php",
       {
         id: myCard.data("id"),
-        qty: 1
+        qty: 1,
+        price: $(this)
+          .find(".price")
+          .html()
       },
       function(response) {
         if (response.status === "OK") {
