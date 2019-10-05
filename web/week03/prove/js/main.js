@@ -33,10 +33,12 @@ function fetchProducts() {
     productList.children().remove();
 
     // iterates through products array
-    if (response.data.length > 0) {
-      $.each(response.data, function(key, row) {
+    if (response.data.products.length > 0) {
+      $.each(response.data.products, function(key, row) {
         createProductCard(productList, row);
       });
+
+      $("#cart-items").html(response.data.cart.items);
     }
   }).fail(function(error) {
     swal({

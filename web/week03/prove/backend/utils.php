@@ -27,3 +27,8 @@ function getProduct($id)
 
     return $data[array_search($id, array_column($data, 'id'))];
 }
+
+function findProductInCart($id, $cart)
+{
+    return array_search($id, array_column($cart, 'id'));
+}

@@ -1,4 +1,8 @@
 <?php
+session_start();
+
+$cart = $_SESSION['cart'];
+
 // Get the contents of the JSON file 
 $strJsonFileContents = file_get_contents("products.json");
 
@@ -8,9 +12,11 @@ $data = json_decode($strJsonFileContents, true);
 $products = [
     'status' => 'OK',
     'message' => '',
-    'data' => $data
+    'data' => [
+        'products' => $data,
+        'cart' => $cart
+    ]
 ];
 
 header('Content-Type: application/json');
 echo json_encode($products);
-?>

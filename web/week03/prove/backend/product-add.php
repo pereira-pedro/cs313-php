@@ -26,13 +26,18 @@ if ($status === 'OK') {
             items => []
         ];
 
-    array_push($cart['items'], [
-        id => $id,
-        qty => $qty,
-        price => $product['price'],
-        title => $product['title']
-    ]);
+    $productIndex = findProductInCart($id, $cart);
 
+    if ($productIndex !== 0) {
+        $cart['items'][$key]['qty'] += $qty;
+    } else {
+        array_push($cart['items'], [
+            id => $id,
+            qty => $qty,
+            price => $product['price'],
+            title => $product['title']
+        ]);
+    }
     $_SESSION['cart'] = $cart;
 }
 

@@ -55,7 +55,7 @@ function showCartDetails(container, cartItem) {
   });
 
   newCartItem.append(
-    `<div class="d-flex flex-row mb-3">
+    `<div class="d-flex justify-content-between mb-3">
         <div class="p-2">${cartItem.title}</div>
         <div class="p-2">${cartItem.qty}</div>
         <div class="p-2">${cartItem.price}</div>
