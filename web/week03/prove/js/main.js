@@ -42,7 +42,7 @@ function fetchProducts() {
         createProductCard(productList, row);
       });
 
-      $("#cart-items").html(response.data.items);
+      $("#cart-items").html(response.data.cart.items);
     }
   }).fail(function(error) {
     swal({
@@ -93,6 +93,7 @@ function createProductCard(container, product) {
             response.data.description.subtitle
           );
           $("#form-product-description .modal-footer .btn-primary")
+            .off( "click", "**" );
             .html(
               `Add to cart <i>(${formatter.format(response.data.price)})</i>`
             )

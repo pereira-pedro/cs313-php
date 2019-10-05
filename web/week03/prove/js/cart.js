@@ -39,7 +39,7 @@ function showCart() {
       $("#cart-items-num").html(response.data.items);
       $("#cart-items-total").html(formatter.format(response.data.total));
     } else {
-      cartList.append($(`<div class="text-muted">Your cart is empty.</div>`));
+      cartList.append($(`<h2 class="text-muted">Your cart is empty.</h2>`));
       $("#cart-items-num").html("");
       $("#cart-items-total").html("");
     }
