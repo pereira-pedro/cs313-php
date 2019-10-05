@@ -94,7 +94,7 @@ function createProductCard(container, product) {
           );
           $("#form-product-description .modal-footer .btn-primary")
             .html(
-              `Add to chart <i>(${formatter.format(response.data.price)})</i>`
+              `Add to cart <i>(${formatter.format(response.data.price)})</i>`
             )
             .click(function() {
               $("#form-product-description").modal("hide");
@@ -133,7 +133,7 @@ function renderRating(rating) {
   return html;
 }
 
-function adToCart(id, qty) {
+function addToCart(id, qty) {
   $.post(
     "backend/product-add.php",
     {
