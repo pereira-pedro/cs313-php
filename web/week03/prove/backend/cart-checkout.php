@@ -49,7 +49,7 @@ unset($_SESSION['cart']);
     <section class="py-3 m-3">
         <div class="container-fluid">
             <h3 class="m-3">Your order <?php echo $cart['id'] ?> was placed.</h3>
-            <h4 class="m-2">See the details below</h4>
+            <h4 class="m-2 lead">See details below</h4>
         </div>
         <div class="container-fluid">
             <div class="row table-responsive">
