@@ -53,7 +53,6 @@ var_dump($cart);
     <!-- Page Content -->
     <section class="py-5 m-3">
         <div class="container">
-            <h2 class="font-weight-light">Grampos</h2>
             <p>
                 You'll find the best deals here.
             </p>
@@ -75,7 +74,7 @@ var_dump($cart);
                     </thead>
                     <tbody id="cart-list">
                         <?php
-            foreach ($cart as $item) {
+            foreach ($cart['items'] as $item) {
               ?>
                         <tr>
                             <td class="p-2"><?php echo $item['title'] ?></td>
@@ -90,8 +89,9 @@ var_dump($cart);
                     <tfoot>
                         <tr>
                             <th>Total</th>
-                            <th id="cart-items-num" class="text-center"></th>
-                            <th id="cart-items-total" colspan="2" class="text-right"></th>
+                            <th id="cart-items-num" class="text-center"><?php echo orderNumItems($cart) ?></th>
+                            <th id="cart-items-total" colspan="2" class="text-right"><?php echo orderValue($cart) ?>
+                            </th>
                         </tr>
                     </tfoot>
                 </table>
@@ -100,13 +100,13 @@ var_dump($cart);
         <div class="container">
             <h4 class="m-2">The order will be delivered to</h4>
         </div>
-        <div class="container">
+        <div class="container" class="text-mute">
 
-            <?php echo $address1 ?>
-            <?php echo $address2 ?>
-            <?php echo $city ?>
-            <?php echo $state ?>
-            <?php echo $zip ?>
+            <?php echo $address1 ?><br />
+            <?php echo $address2 ?><br />
+            <?php echo $city ?><br />
+            <?php echo $state ?><br />
+            <?php echo $zip ?><br />
         </div>
         </div>
         <div class="container">
