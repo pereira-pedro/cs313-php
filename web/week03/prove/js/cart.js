@@ -1,5 +1,5 @@
 /**
- * A formatter to currency
+ * A currency formatter
  */
 var formatter = new Intl.NumberFormat("en-US", {
   style: "currency",
