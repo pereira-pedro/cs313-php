@@ -9,6 +9,10 @@ var formatter = new Intl.NumberFormat("en-US", {
 $(function() {
   // fetch products and creates products card
   showCart();
+
+  $("#proceed-checkout").click(function() {
+    $("#form-cart-checkout").modal("show");
+  });
 });
 
 /**
@@ -68,7 +72,7 @@ function showCartDetails(container, cartItem) {
      <td class="p-2 text-right">${formatter.format(cartItem.price)}</td>
      <td class="p-2 text-right">${formatter.format(
        cartItem.qty * cartItem.price
-     )}<i data-id="${cartItem.id}"class="fa fa-trash-alt"></i></td>
+     )}<i data-id="${cartItem.id}"class="fa fa-trash"></i></td>
     `
   );
 
@@ -96,7 +100,7 @@ function showCartDetails(container, cartItem) {
     );
   });
 
-  newCartItem.find(".fa-trash-alt").click(function() {
+  newCartItem.find(".fa-trash").click(function() {
     $.post(
       "backend/product-add.php",
       {
