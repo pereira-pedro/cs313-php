@@ -31,7 +31,11 @@ if ($status === 'OK') {
         if ($qty !== 0) {
             $cart['items'][$productIndex]['qty'] += $qty;
         } else {
-            unset($cart['items'][$productIndex]);
+            if (count($cart['items']) === 1) {
+                unset($cart);
+            } else {
+                unset($cart['items'][$productIndex]);
+            }
         }
     } else {
         array_push($cart['items'], [
@@ -41,7 +45,10 @@ if ($status === 'OK') {
             'title' => $product['title']
         ]);
     }
-    $_SESSION['cart'] = $cart;
+
+    if (isset($cart)) {
+        $_SESSION['cart'] = $cart;
+    }
 }
 
 $response = [
