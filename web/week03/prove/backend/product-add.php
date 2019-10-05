@@ -27,8 +27,9 @@ if ($status === 'OK') {
         ];
 
     $productIndex = findProductInCart($id, $cart);
-
+    var_dump($productIndex);
     if ($productIndex !== false) {
+        var_dump($cart['items'][$productIndex]);
         $cart['items'][$productIndex]['qty'] += $qty;
     } else {
         array_push($cart['items'], [
