@@ -79,7 +79,7 @@ function createProductCard(container, product) {
           setTimeout(function() {
             myCard.removeClass("shaking");
           }, 800);
-          $("#cart-items").val(response.data);
+          $("#cart-items").html(response.data);
         } else {
           swal({
             type: "error",

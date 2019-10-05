@@ -2,8 +2,8 @@
 function orderNumItems($cart)
 {
     $total = 0;
-    foreach (array_column($cart['items'], 'qty') as $c) {
-        $total += $c;
+    foreach ($cart['items'] as $c) {
+        $total += $c['qty'];
     }
 
     return $total;
