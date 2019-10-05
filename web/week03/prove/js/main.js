@@ -72,28 +72,7 @@ function createProductCard(container, product) {
   newProductCard.find(".btn-primary").click(function() {
     var myCard = $(this).closest(".card");
 
-    $.post(
-      "backend/product-add.php",
-      {
-        id: myCard.data("id"),
-        qty: myCard.find("input").val()
-      },
-      function(response) {
-        if (response.status === "OK") {
-          myCard.addClass("shaking");
-          setTimeout(function() {
-            myCard.removeClass("shaking");
-          }, 800);
-          $("#cart-items").html(response.data.items);
-        } else {
-          swal({
-            type: "error",
-            title: "Error",
-            text: `${error.status} ${error.statusText}`
-          });
-        }
-      }
-    );
+    addToCart(myCard.data("id"), myCard.find("input").val());
   });
 
   newProductCard.find(".card-title a").click(function() {
@@ -113,15 +92,21 @@ function createProductCard(container, product) {
           $("#form-product-description .product-description-subtitle").html(
             response.data.description.subtitle
           );
+          $("#form-product-description .modal-footer .btn-primary")
+            .html(
+              `Add to chart <i>(${formatter.format(response.data.price)})</i>`
+            )
+            .click(function() {
+              $("#form-product-description").modal("hide");
+              addToCart(response.data.id, 1);
+            });
 
           var listContainer = $("#form-product-description .list-group");
           $.each(response.data.description.details, function(key, row) {
             listContainer.append($(`<li class="list-group-item">${row}</li>`));
           });
 
-          $("#form-product-description").modal({
-            show: true
-          });
+          $("#form-product-description").modal("show");
         } else {
           swal({
             type: "error",
@@ -146,4 +131,29 @@ function renderRating(rating) {
   }
 
   return html;
+}
+
+function adToCart(id, qty) {
+  $.post(
+    "backend/product-add.php",
+    {
+      id: id,
+      qty: qty
+    },
+    function(response) {
+      if (response.status === "OK") {
+        myCard.addClass("shaking");
+        setTimeout(function() {
+          myCard.removeClass("shaking");
+        }, 800);
+        $("#cart-items").html(response.data.items);
+      } else {
+        swal({
+          type: "error",
+          title: "Error",
+          text: `${error.status} ${error.statusText}`
+        });
+      }
+    }
+  );
 }
