@@ -10,8 +10,6 @@ $zip = filter_input(INPUT_POST, 'zip', FILTER_SANITIZE_STRING);
 
 $cart = $_SESSION['cart'];
 unset($_SESSION['cart']);
-
-var_dump($cart);
 ?>
 <!DOCTYPE html>
 <html lang="en">
