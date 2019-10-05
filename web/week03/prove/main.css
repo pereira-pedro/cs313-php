@@ -6,6 +6,10 @@
   width: 120px;
 }
 
+.product-card {
+  max-width: 18rem;
+}
+
 .fa {
   font-size: 20px;
 }
