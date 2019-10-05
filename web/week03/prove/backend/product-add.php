@@ -29,7 +29,6 @@ if ($status === 'OK') {
             id => uniqid(),
             items => []
         ];
-    var_dump($cart);
 
     array_push($cart['items'], [
         id => $id,
@@ -38,14 +37,12 @@ if ($status === 'OK') {
     ]);
 
     $_SESSION['cart'] = $cart;
-
-    var_dump($_SESSION['cart']);
 }
 
 $response = [
     'status' => $status,
     'message' => $message,
-    'data' => itemsInCart($_SESSION['cart'])
+    'data' => orderNumItems($_SESSION['cart'])
 ];
 
 header('Content-Type: application/json');
