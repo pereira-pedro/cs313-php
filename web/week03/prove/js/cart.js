@@ -32,6 +32,8 @@ function showCart() {
       $.each(response.data.cart.items, function(key, row) {
         showCartDetails(cartList, row);
       });
+      $("#cart-items-num").html(response.data.items);
+      $("#cart-items-total").html(response.data.total);
     } else {
       cartList.append($(`<div class="text-muted">Your cart is empty.</div>`));
     }
