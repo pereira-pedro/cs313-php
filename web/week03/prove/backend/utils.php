@@ -1,12 +1,12 @@
 <?php
 function orderNumItems($cart)
 {
-    $total = 0;
+    $num = 0;
     foreach ($cart['items'] as $c) {
-        $total += $c['qty'];
+        $num += $c['qty'];
     }
 
-    return $total;
+    return $num;
 }
 
 function orderValue($cart)

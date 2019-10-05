@@ -55,7 +55,11 @@ if ($status === 'OK') {
 $response = [
     'status' => $status,
     'message' => $message,
-    'data' => orderNumItems($_SESSION['cart'])
+    'data' => [
+        cart => $_SESSION['cart'],
+        items => orderNumItems($_SESSION['cart']),
+        total => orderValue($_SESSION['cart'])
+    ]
 ];
 
 header('Content-Type: application/json');
