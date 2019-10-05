@@ -42,7 +42,7 @@ function fetchProducts() {
         createProductCard(productList, row);
       });
 
-      $("#cart-items").html(response.data.cart.items);
+      $("#cart-items").html(response.data.items);
     }
   }).fail(function(error) {
     swal({
@@ -59,13 +59,13 @@ function fetchProducts() {
  * @param {Object} assignment
  */
 function createProductCard(container, product) {
-  var htmlItem = PRODUCT_TEMPLATE.replace(/ID/g, product.id)
-    .replace(/TITLE/g, product.title)
-    .replace(/PICTURE/g, product.picture)
-    .replace(/PRICE/g, formatter.format(product.price))
-    .replace(/RATING/g, renderRating(product.rating));
-
-  var newProductCard = $(htmlItem);
+  var newProductCard = $(
+    PRODUCT_TEMPLATE.replace(/ID/g, product.id)
+      .replace(/TITLE/g, product.title)
+      .replace(/PICTURE/g, product.picture)
+      .replace(/PRICE/g, formatter.format(product.price))
+      .replace(/RATING/g, renderRating(product.rating))
+  );
 
   container.append(newProductCard);
 
@@ -84,7 +84,46 @@ function createProductCard(container, product) {
           setTimeout(function() {
             myCard.removeClass("shaking");
           }, 800);
-          $("#cart-items").html(response.data.cart.items);
+          $("#cart-items").html(response.data.items);
+        } else {
+          swal({
+            type: "error",
+            title: "Error",
+            text: `${error.status} ${error.statusText}`
+          });
+        }
+      }
+    );
+  });
+
+  newProductCard.find(".card-title a").click(function() {
+    var myCard = $(this).closest(".card");
+
+    $.post(
+      "backend/product-detail.php",
+      {
+        id: myCard.data("id")
+      },
+      function(response) {
+        if (response.status === "OK") {
+          $("#form-product-description-title").html(
+            response.data.product.title
+          );
+          $("#form-product-description .product-description-title").html(
+            response.data.product.description.title
+          );
+          $("#form-product-description .product-description-subtitle").html(
+            response.data.product.description.subtitle
+          );
+
+          var listContainer = $("#form-product-description .list-group");
+          $.each(response.data.product.description.details, function(key, row) {
+            listContainer.append($(`<li class="list-group-item">${row}</li>`));
+          });
+
+          $("#form-product-description").modal({
+            show: true
+          });
         } else {
           swal({
             type: "error",
