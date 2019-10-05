@@ -11,7 +11,7 @@ $(function() {
  */
 function showCart() {
   // use jQuery to fetch JSON file with products
-  $.getJSON("../backend/cart-list.php", function(response) {
+  $.getJSON("backend/cart-list.php", function(response) {
     var productList = $("#product-list");
 
     if (response.status !== "OK") {
