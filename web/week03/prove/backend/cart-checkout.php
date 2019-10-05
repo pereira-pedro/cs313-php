@@ -28,38 +28,30 @@ unset($_SESSION['cart']);
 
 <body>
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light shadow fixed-top">
-        <div class="container">
-            <a class="navbar-brand" href="index.html"><img src="../images/logo.svg" width="80" height="80" /></a>
-            <h1>Grampos</h1>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
-                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a href="../index.html" class="btn btn-primary">
-                            Continue Shopping
-                        </a>
-                    </li>
-                </ul>
-            </div>
+    <nav class="navbar navbar-light navbar-expand-lg top-header">
+        <a class="navbar-brand" href="index.html"><img src="images/logo.svg" width="150" height="50" /></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+            aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a href="../index.html" class="btn btn-light m-2">
+                        Continue Shopping
+                    </a>
+                </li>
+            </ul>
         </div>
     </nav>
 
     <!-- Page Content -->
-    <section class="py-5 m-3">
-        <div class="container">
-            <p>
-                You'll find the best deals here.
-            </p>
-        </div>
-        <div class="container">
-            <h1 class="m-3">Your order <?php echo $cart['id'] ?> was placed.</h1>
+    <section class="py-3 m-3">
+        <div class="container-fluid">
+            <h3 class="m-3">Your order <?php echo $cart['id'] ?> was placed.</h3>
             <h4 class="m-2">See the details below</h4>
         </div>
-        <div class="container">
+        <div class="container-fluid">
             <div class="row table-responsive">
                 <table class="table table-hover">
                     <thead>
@@ -95,17 +87,16 @@ unset($_SESSION['cart']);
                 </table>
             </div>
         </div>
-        <div class="container">
+        <div class="container-fluid">
             <h4 class="m-2">The order will be delivered to</h4>
-        </div>
-        <div class="container" class="text-mute">
+            <div class="lead">
 
-            <?php echo $address1 ?><br />
-            <?php echo $address2 ?><br />
-            <?php echo $city ?>
-            <?php echo $state ?>
-            <?php echo $zip ?>
-        </div>
+                <?php echo $address1 ?><br />
+                <?php echo $address2 ?><br />
+                <?php echo $city ?>
+                <?php echo $state ?>
+                <?php echo $zip ?>
+            </div>
         </div>
         <div class="container">
             <a href="../index.html">Continue Shopping</a>
