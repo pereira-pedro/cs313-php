@@ -28,10 +28,12 @@ function showCart() {
     cartList.children().remove();
 
     // iterates through cart array
-    if (response.data.cart.items.length > 0) {
+    if (response.data.items > 0) {
       $.each(response.data.cart.items, function(key, row) {
         showCartDetails(cartList, row);
       });
+    } else {
+      cartList.append($(`<div class="text-muted">Your cart is empty.</div>`));
     }
   }).fail(function(error) {
     swal({
