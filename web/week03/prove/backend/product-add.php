@@ -34,11 +34,16 @@ if ($status === 'OK') {
             'title' => $product['title']
         ]);
     } else {
+        var_dump($cart);
         // remove if qty is 0
         if ($qty !== 0) {
             $cart['items'][$productIndex]['qty'] += $qty;
         } else {
-            unset($cart['items'][$productIndex]);
+            if (count($cart['items']) > 1) {
+                unset($cart['items'][$productIndex]);
+            } else {
+                unset($cart['items']);
+            }
         }
     }
 
