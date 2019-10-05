@@ -98,7 +98,6 @@ function createProductCard(container, product) {
             )
             .click(function() {
               $("#form-product-description").modal("hide");
-              var myCard = $(this).closest(".card");
               addToCart(myCard, 1);
             });
 
