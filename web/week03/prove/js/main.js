@@ -4,7 +4,7 @@ var PRODUCT_TEMPLATE = "";
  * This is a shortcut to jQuery ready function. It's called right after DOM is loaded and ready.
  */
 $(function() {
-  $.get("product-card-template.html", function(data) {
+  $.get("../product-card-template.html", function(data) {
     PRODUCT_TEMPLATE = data;
 
     // fetch products and creates products card
@@ -13,48 +13,11 @@ $(function() {
 });
 
 /**
- * This method submits form
- */
-function submitForm(container) {
-  // clear previous content
-  container.empty();
-
-  $.post("backend/form-handler.php", $("#form1").serialize(), function(
-    response
-  ) {
-    Object.keys(response).forEach(function(key) {
-      var newElement = $("<div />", {
-        class: "d-flex justify-content-between"
-      })
-        .append(`<div class="p-2 font-weight-bold">${key}:</div>`)
-        .append(
-          `<div class="p-2">${renderValue(Reflect.get(response, key))}</div>`
-        );
-
-      container.append(newElement);
-
-      $("#form-container").slideUp("slow", function() {
-        container.show("slow");
-      });
-    });
-    var newButton = $("<button/>", {
-      class: "btn btn-primary",
-      text: "Show Form",
-      click: function() {
-        container.hide("slow", function() {
-          $("#form-container").slideDown("slow");
-        });
-      }
-    });
-    container.append(newButton);
-  });
-}
-/**
  * Fetch products and create cards
  */
 function fetchProducts() {
   // use jQuery to fetch JSON file with products
-  $.getJSON("backend/product-list.php", function(response) {
+  $.getJSON("../backend/product-list.php", function(response) {
     var productList = $("#product-list");
 
     if (response.status !== "OK") {
@@ -104,7 +67,7 @@ function createProductCard(container, product) {
     var myCard = $(this).closest(".card");
 
     $.post(
-      "backend/product-add.php",
+      "../backend/product-add.php",
       {
         id: myCard.data("id"),
         qty: 1

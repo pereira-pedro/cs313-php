@@ -14,7 +14,7 @@
     },
     "price": "99.99",
     "rating": 2,
-    "picture": "m001777238_sc7.jpg"
+    "picture": "http://evening-tor-76340.herokuapp.com/week03/prove/images/m001777238_sc7.jpg"
   },
   {
     "id": 2,
@@ -33,7 +33,7 @@
     },
     "price": "113.99",
     "rating": 3,
-    "picture": "s1012201_sc7.jpg"
+    "picture": "http://evening-tor-76340.herokuapp.com/week03/prove/images/s1012201_sc7.jpg"
   },
   {
     "title": "HP 952XL Black High-Yield & 952 Cyan, Magenta, Yellow Ink Cartridges, 4-Pack (N9K28AN)",
@@ -51,6 +51,6 @@
     },
     "price": "113.99",
     "rating": 4,
-    "picture": "s1012201_sc7.jpg"
+    "picture": "http://evening-tor-76340.herokuapp.com/week03/prove/images/s1012201_sc7.jpg"
   }
 ]
