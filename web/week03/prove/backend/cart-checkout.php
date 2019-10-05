@@ -48,7 +48,7 @@ unset($_SESSION['cart']);
     <!-- Page Content -->
     <section class="py-3 m-3">
         <div class="container-fluid">
-            <h3 class="m-3">Your order <?php echo $cart['id'] ?> was placed.</h3>
+            <h3 class="m-2">Your order <?php echo $cart['id'] ?> was placed.</h3>
             <h4 class="m-2 lead">See details below</h4>
         </div>
         <div class="container-fluid">
@@ -89,7 +89,7 @@ unset($_SESSION['cart']);
         </div>
         <div class="container-fluid">
             <h4 class="m-2">The order will be delivered to</h4>
-            <div class="lead">
+            <div class="lead m-2">
 
                 <?php echo $address1 ?><br />
                 <?php echo $address2 ?><br />
