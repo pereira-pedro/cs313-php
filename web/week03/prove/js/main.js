@@ -106,18 +106,16 @@ function createProductCard(container, product) {
       },
       function(response) {
         if (response.status === "OK") {
-          $("#form-product-description-title").html(
-            response.data.product.title
-          );
+          $("#form-product-description-title").html(response.data.title);
           $("#form-product-description .product-description-title").html(
-            response.data.product.description.title
+            response.data.description.title
           );
           $("#form-product-description .product-description-subtitle").html(
-            response.data.product.description.subtitle
+            response.data.description.subtitle
           );
 
           var listContainer = $("#form-product-description .list-group");
-          $.each(response.data.product.description.details, function(key, row) {
+          $.each(response.data.description.details, function(key, row) {
             listContainer.append($(`<li class="list-group-item">${row}</li>`));
           });
 
