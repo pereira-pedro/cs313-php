@@ -134,7 +134,7 @@ function renderRating(rating) {
 }
 
 function addToCart(id, qty) {
-  var myCard = $.find(`.card [data-id="${id}"]`);
+  var myCard = $.find(`div[data-id="${id}"]`);
   $.post(
     "backend/product-add.php",
     {
