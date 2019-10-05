@@ -25,7 +25,7 @@ if ($status === 'OK') {
     // search if product already exists in cart
     $productIndex = array_search($id, array_column($cart['items'], 'id', true));
 
-    // if not exists update quantity
+    // if exists update quantity
     if ($productIndex === false) {
         array_push($cart['items'], [
             'id' => $id,
@@ -59,7 +59,8 @@ $response = [
         cart => $_SESSION['cart'],
         items => orderNumItems($_SESSION['cart']),
         total => orderValue($_SESSION['cart'])
-    ]
+    ],
+    'orig' => $cart
 ];
 
 header('Content-Type: application/json');
