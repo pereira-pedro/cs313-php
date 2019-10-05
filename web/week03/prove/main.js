@@ -114,7 +114,7 @@ function createProductCard(container, product) {
           myCard.addClass("shaking");
           setTimeout(function() {
             myCard.removeClass("shaking");
-          }, 1000);
+          }, 800);
           $("#cart-items").val(response.data);
         } else {
           swal({
