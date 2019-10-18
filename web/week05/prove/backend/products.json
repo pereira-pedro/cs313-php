@@ -1,0 +1,89 @@
+[
+  {
+    "id": 1,
+    "title": "Xerox 106R02777 Black Toner Cartridge, High Yield",
+    "description": {
+      "title": "Print documents or make copies with this Xerox WorkCentre high-capacity black toner cartridge.",
+      "subtitle": "Keep up with basic printing tasks with this high-capacity black toner cartridge, which is compatible with select Xerox printers for easy replacement. The 3,000-page yield handles daily printing needs, ideal for home use or small offices. This genuine Xerox WorkCentre black toner cartridge delivers consistent bold results for text and graphics work.",
+      "details": [
+        "High-yield toner cartridge yields up to 3000 pages",
+        "The package includes one black toner cartridge",
+        "Xerox high-yield toner cartridges offer excellent value and reliability",
+        "Compatible with: Xerox Phaser 3260/DI, 3260/DNI, 3260V_DI, 3260V_DNI, Xerox WorkCentre 3215/NI, 3215V_NI, 3225/DNI, 3225V_DNI, 3225V_DNIH, 3225V_DNIY"
+      ]
+    },
+    "price": "99.99",
+    "rating": 2,
+    "picture": "http://evening-tor-76340.herokuapp.com/week03/prove/images/m001777238_sc7.jpg"
+  },
+  {
+    "id": 2,
+    "title": "HP 952XL Black High-Yield & 952 Cyan, Magenta, Yellow Ink Cartridges, 4-Pack (N9K28AN)",
+    "description": {
+      "title": "HP 952XL Black High-Yield & 952 Cyan, Magenta, Yellow Ink Cartridges, 4-Pack (N9K28AN)",
+      "subtitle": "Original HP 952XL/952 ink cartridge multipacks provide the right amount of ink for everyday printing.",
+      "details": [
+        "HP 952 ink cartridges work with: HP OfficeJet Pro 7720, 7730, 7740, 8210, 8216, 8702, 8710, 8715, 8720, 8725, 8730, 8740",
+        "Up to 2X more prints with Original HP ink vs. refill cartridges.",
+        "Page yield of 952: approx. 2,000 pages black, 700 pages cyan, 700 pages magenta, 700 pages yellow",
+        "Colors: Black, cyan, magenta, yellow",
+        "What's in the box (N9K28AN): One HP 952XL black high-yield ink cartridge (F6UI9AN), three HP 952 cyan, magenta & yellow ink cartridges (L0S49AN, L0S52AN, L0S55AN)",
+        "Save a trip when you buy an Original HP 952 ink cartridge 4-pack with black, cyan, magenta, and yellow. Produce prints with brilliant color that resists water, smearing, and fading."
+      ]
+    },
+    "price": "113.99",
+    "rating": 3,
+    "picture": "http://evening-tor-76340.herokuapp.com/week03/prove/images/s1012201_sc7.jpg"
+  },
+  {
+    "id": 3,
+    "title": "Brother TN660 Black Toner Cartridge, High Yield",
+    "description": {
+      "title": "Keep your office copier ready for high-volume print jobs with this genuine Brother black high-yield toner cartridge.",
+      "subtitle": "Create crisp, professional documents with this Brother genuine black high-yield toner cartridge. The bold black ink stands out beautifully on color and white pages for easy-to-read script, and each cartridge delivers up to 2,600 pages for continuous office productivity. With its simple design, this toner is easy to install in compatible Brother laser printers. Each cartridge can be recycled after use to help your business maintain its commitment to the environment.",
+      "details": [
+        "This toner cartridge delivers up to 2600 pages based on ISO/IEC 19752 testing methodology",
+        "Package includes one black toner cartridge for use with a compatible laser printer",
+        "Brother's technology is the guarantee of continuously accurate printing in any situation",
+        "Compatible with: Brother DCP-L2520DW, DCP-L2540DW, HL-L2300D, HL-L2305W, HL-L2315DW, HL-L2320D, HL-L2340DW, HL-L2360DW, HL-L2380DW, MFC-L2680W, MFC-L2685DW, MFC-L2700DW, MFC-L2707DW"
+      ]
+    },
+    "price": "53.99",
+    "rating": 5,
+    "picture": "http://evening-tor-76340.herokuapp.com/week03/prove/images/sp38714645_sc7.jpg"
+  },
+  {
+    "id": 4,
+    "title": "Scott Choose-A-Sheet Kitchen Roll Paper Towels, 1-Ply, 102 Sheets/Roll, 15 Rolls/Pack (36371)",
+    "description": {
+      "title": "Stock up with this 15-pack of Scott Choose-A-Sheet white paper towels to clean up even the messiest spills.",
+      "subtitle": "Keep these one-ply paper towels handy to mop up almost any kind of spill. These Scott paper towels have unique ridges for increased durability and performance, and handy perforations make sure you use only what you need for the job at hand.",
+      "details": [
+        "Kitchen roll towels for drying hands or cleaning up messes",
+        "102 sheets per roll, 15 rolls per pack (1530 sheets total)",
+        "1-ply thickness",
+        "White sheets look clean and sanitary"
+      ]
+    },
+    "price": "15.79",
+    "rating": 5,
+    "picture": "http://evening-tor-76340.herokuapp.com/week03/prove/images/sp42717048_sc7.jpg"
+  },
+  {
+    "id": 5,
+    "title": "Dixie Pathways Medium-Weight Paper Plates, 8.5\", 125/Pack (DXEUX9WSPK)",
+    "description": {
+      "title": "Dixie Pathways paper plates help make cleanup after entertaining simple",
+      "subtitle": "Make cleanup simple when the party ends using these Dixie Pathways paper plates. The 8-1/2-inch plates provide ample room for servings of your favorite dishes, and the medium weight ensures they stand strong against liquids and heavier food while resisting cuts. A stylish leaf design on each plate gives your gathering a touch of class, and these plates can be microwaved for simple reheating when necessary. Each pack comes with 125 plates, giving you an ample supply for virtually any entertainment setting.",
+      "details": [
+        "Elegant white background with a stylish leaf design on one side",
+        "Features an 8-1/2-inch diameter size that holds ample amounts of food",
+        "Comes in a pack of 125 for simple stocking",
+        "Microwave-safe for easy reheating"
+      ]
+    },
+    "price": "11.79",
+    "rating": 3,
+    "picture": "http://evening-tor-76340.herokuapp.com/week03/prove/images/s0425613_sc7.jpg"
+  }
+]
