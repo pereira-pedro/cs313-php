@@ -16,6 +16,11 @@ $(function() {
     // fetch products and creates products card
     fetchProducts();
   });
+
+  $("#form-search-product").submit(function() {
+    fetchProducts($("#form-input-search").val());
+    event.preventDefault();
+  });
 });
 
 /**
