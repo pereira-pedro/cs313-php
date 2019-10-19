@@ -4,6 +4,8 @@ var formatter = new Intl.NumberFormat("en-US", {
   currency: "USD"
 });
 
+const Swal = require("sweetalert2");
+
 /**
  * This is a shortcut to jQuery ready function. It's called right after DOM is loaded and ready.
  */
