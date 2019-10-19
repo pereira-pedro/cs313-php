@@ -23,7 +23,14 @@ class Product extends DB
                 $key !== '' ? 'AND p.title LIKE :title' : ''
             )
         );
-
+        echo sprintf(
+            "
+    SELECT p.id, p.title, price, discount_rate, rating, pi.url AS picture
+    FROM product p
+    INNER JOIN product_image pi ON pi.id_product = p.id
+    WHERE pi.main = true %s",
+            $key !== '' ? 'AND p.title LIKE :title' : ''
+        );
         $stmt->bindValue(':title', $key);
         $stmt->execute();
         $rows = $stmt->fetchAll(PDO::FETCH_OBJ);
