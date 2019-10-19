@@ -56,7 +56,7 @@ try {
 
     $response = [
         'status' => 'OK',
-        'message' => '',,
+        'message' => '',
         'data' => [
             'cart' => $_SESSION['cart'],
             'items' => orderNumItems($_SESSION['cart']),
