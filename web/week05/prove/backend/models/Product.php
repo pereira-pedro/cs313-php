@@ -40,7 +40,7 @@ class Product extends DB
         );
         $stmt->bindValue(':id', $id, PDO::PARAM_INT);
         $stmt->execute();
-        $rows = $stmt->fetchAll(PDO::FETCH_OBJ);
+        $rows = $stmt->fetch(PDO::FETCH_OBJ);
 
         return $rows;
     }

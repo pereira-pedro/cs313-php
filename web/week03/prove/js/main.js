@@ -86,8 +86,9 @@ function createProductCard(container, product) {
       function(response) {
         if (response.status === "OK") {
           $("#form-product-description-title").html(response.data.title);
+          const description = JSON.parse(response.data.description);
           $("#form-product-description .product-description-title").html(
-            response.data.description.title
+            description.title
           );
           $("#form-product-description .product-description-subtitle").html(
             response.data.description.subtitle
@@ -104,7 +105,7 @@ function createProductCard(container, product) {
 
           var listContainer = $("#form-product-description .list-group");
           listContainer.empty();
-          $.each(response.data.description.details, function(key, row) {
+          $.each(description.details, function(key, row) {
             listContainer.append($(`<li class="list-group-item">${row}</li>`));
           });
 
