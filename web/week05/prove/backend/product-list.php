@@ -20,7 +20,8 @@ try {
                 'cart' => $cart,
                 'items' => orderNumItems($cart),
                 'total' => orderValue($cart)
-            ]
+            ],
+            'key' => $key
         ]
     ];
 } catch (PDOException $ex) {

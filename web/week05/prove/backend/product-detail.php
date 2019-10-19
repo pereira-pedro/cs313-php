@@ -1,26 +1,28 @@
 <?php
-include_once 'utils.php';
-session_start();
+include_once 'Product.php';
 $id = filter_input(INPUT_POST, 'id', FILTER_VALIDATE_INT);
 
-$status = 'OK';
-$message = '';
+try {
 
-if ($id === 0) {
-    $status = 'FAIL';
-    $message = 'Invalid product.';
+
+    if ($id === 0) {
+        throw new Exception('Invalid product.');
+    }
+
+    $products = new Product();
+
+    $response = [
+        'status' => 'OK',
+        'message' => '',
+        'data' => $products->getDetails($id)
+    ];
+} catch (Exception $ex) {
+    $response = [
+        'status' => 'FAIL',
+        'message' => $ex->getMessage(),
+        'data' => ''
+    ];
 }
-
-if ($status === 'OK') {
-
-    $product = getProduct($id);
-}
-
-$response = [
-    'status' => $status,
-    'message' => $message,
-    'data' => $product
-];
 
 header('Content-Type: application/json');
 echo json_encode($response);
