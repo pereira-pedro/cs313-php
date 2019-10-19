@@ -23,7 +23,9 @@ class Product extends DB
                 $key !== '' ? 'AND p.title LIKE :title' : ''
             )
         );
-        $stmt->bindValue(':title', "%$key%", PDO::PARAM_STR);
+
+        $key = '%' . $key . '%';
+        $stmt->bindValue(':title', $key, PDO::PARAM_STR);
         $stmt->execute();
         $rows = $stmt->fetchAll(PDO::FETCH_OBJ);
 
@@ -40,8 +42,8 @@ class Product extends DB
         );
         $stmt->bindValue(':id', $id, PDO::PARAM_INT);
         $stmt->execute();
-        $rows = $stmt->fetch(PDO::FETCH_OBJ);
+        $row = $stmt->fetch(PDO::FETCH_OBJ);
 
-        return $rows;
+        return $row;
     }
 }
