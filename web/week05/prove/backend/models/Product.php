@@ -11,7 +11,22 @@ class Product extends DB
         $this->conn = $this->getConnection();
     }
 
-    function listProducts($key = '')
+    function retrieve($id)
+    {
+        $stmt = $this->conn->prepare(
+            "
+            SELECT title, price, description, stock, discount_rate, tax_rate, rating
+            FROM product
+            WHERE id = :id"
+        );
+        $stmt->bindValue(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+        $row = $stmt->fetch(PDO::FETCH_OBJ);
+
+        return $row;
+    }
+
+    function listAll($key = '')
     {
         $stmt = $this->conn->prepare(
             sprintf(
@@ -28,20 +43,5 @@ class Product extends DB
         $rows = $stmt->fetchAll(PDO::FETCH_OBJ);
 
         return $rows;
-    }
-
-    function getDetails($id)
-    {
-        $stmt = $this->conn->prepare(
-            "
-            SELECT title, price, description
-            FROM product p
-            WHERE id = :id"
-        );
-        $stmt->bindValue(':id', $id, PDO::PARAM_INT);
-        $stmt->execute();
-        $row = $stmt->fetch(PDO::FETCH_OBJ);
-
-        return $row;
     }
 }

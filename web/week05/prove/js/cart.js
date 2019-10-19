@@ -28,7 +28,7 @@ function showCart() {
 
     // an error found
     if (response.status !== "OK") {
-      swal({
+      Swal.fire({
         type: "error",
         title: "Error",
         text: response.message
@@ -52,7 +52,7 @@ function showCart() {
       $("#cart-items-total").html("");
     }
   }).fail(function(error) {
-    swal({
+    Swal.fire({
       type: "error",
       title: "Error",
       text: `${error.status} ${error.statusText}`
@@ -114,7 +114,7 @@ function updateCart(id, qty, update) {
       if (response.status === "OK") {
         showCart();
       } else {
-        swal({
+        Swal.fire({
           type: "error",
           title: "Error",
           text: `${error.status} ${error.statusText}`

@@ -14,7 +14,7 @@ try {
     $response = [
         'status' => 'OK',
         'message' => '',
-        'data' => $products->getDetails($id)
+        'data' => $products->retrieve($id)
     ];
 } catch (Exception $ex) {
     $response = [

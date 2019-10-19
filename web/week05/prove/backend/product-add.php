@@ -1,21 +1,21 @@
 <?php
 include_once 'utils.php';
+include_once 'models/Product.php';
+
 session_start();
 $id = filter_input(INPUT_POST, 'id', FILTER_VALIDATE_INT);
 $qty = filter_input(INPUT_POST, 'qty', FILTER_VALIDATE_INT);
 $update = filter_input(INPUT_POST, 'update', FILTER_VALIDATE_BOOLEAN);
 
-$status = 'OK';
-$message = '';
+try {
 
-if ($id === 0) {
-    $status = 'FAIL';
-    $message = 'Invalid product.';
-}
+    if ($id === 0) {
+        throw new Exception('Invalid product.');
+    }
 
-if ($status === 'OK') {
+    $model = new Product();
 
-    $product = getProduct($id);
+    $product = $model->retrieve($id);
 
     $cart = isset($_SESSION['cart']) ?
         $_SESSION['cart'] : [
@@ -31,8 +31,8 @@ if ($status === 'OK') {
         array_push($cart['items'], [
             'id' => $id,
             'qty' => $qty,
-            'price' => $product['price'],
-            'title' => $product['title']
+            'price' => $product->price,
+            'title' => $product->title
         ]);
     } else {
         // remove if qty is 0
@@ -53,18 +53,24 @@ if ($status === 'OK') {
     }
 
     $_SESSION['cart'] = $cart;
+
+    $response = [
+        'status' => 'OK',
+        'message' => '',,
+        'data' => [
+            'cart' => $_SESSION['cart'],
+            'items' => orderNumItems($_SESSION['cart']),
+            'total' => orderValue($_SESSION['cart'])
+        ]
+    ];
+} catch (Exception $ex) {
+    $response = [
+        'status' => 'FAIL',
+        'message' => $ex->getMessage(),
+        'data' => ''
+    ];
 }
 
-$response = [
-    'status' => $status,
-    'message' => $message,
-    'data' => [
-        'cart' => $_SESSION['cart'],
-        'items' => orderNumItems($_SESSION['cart']),
-        'total' => orderValue($_SESSION['cart'])
-    ],
-    'pi' => $productIndex
-];
 
 header('Content-Type: application/json');
 echo json_encode($response);

@@ -10,7 +10,7 @@ try {
     $products = new Product();
 
     $key = '%' . $key . '%';
-    $data = $products->listProducts($key);
+    $data = $products->listAll($key);
 
     $result = [
         'status' => 'OK',
