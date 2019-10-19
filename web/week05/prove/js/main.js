@@ -14,38 +14,49 @@ $(function() {
     // fetch products and creates products card
     fetchProducts();
   });
+
+  $("#form-search-product").submit(function() {
+    fetchProducts($("#form-input-search").val());
+    event.preventDefault();
+  });
 });
 
 /**
  * Fetch products and create cards
  */
-function fetchProducts() {
+function fetchProducts(key) {
   // use jQuery to fetch JSON file with products
-  $.getJSON("backend/product-list.php", function(response) {
-    var productList = $("#product-list");
+  $.getJSON(
+    "backend/product-list.php",
+    {
+      key: key
+    },
+    function(response) {
+      var productList = $("#product-list");
 
-    if (response.status !== "OK") {
-      swal({
-        type: "error",
-        title: "Error",
-        text: response.message
-      });
-      return;
+      if (response.status !== "OK") {
+        Swal.fire({
+          type: "error",
+          title: "Error",
+          text: response.message
+        });
+        return;
+      }
+
+      // remove previous products
+      productList.children().remove();
+
+      // iterates through products array
+      if (response.data.products.length > 0) {
+        $.each(response.data.products, function(key, row) {
+          createProductCard(productList, row);
+        });
+
+        $("#cart-items").html(response.data.cart.items);
+      }
     }
-
-    // remove previous products
-    productList.children().remove();
-
-    // iterates through products array
-    if (response.data.products.length > 0) {
-      $.each(response.data.products, function(key, row) {
-        createProductCard(productList, row);
-      });
-
-      $("#cart-items").html(response.data.cart.items);
-    }
-  }).fail(function(error) {
-    swal({
+  ).fail(function(error) {
+    Swal.fire({
       type: "error",
       title: "Error",
       text: `${error.status} ${error.statusText}`
@@ -110,7 +121,7 @@ function createProductCard(container, product) {
 
           $("#form-product-description").modal("show");
         } else {
-          swal({
+          Swal.fire({
             type: "error",
             title: "Error",
             text: `${error.status} ${error.statusText}`
@@ -155,7 +166,7 @@ function addToCart(myCard, qty) {
         }, 800);
         $("#cart-items").html(response.data.items);
       } else {
-        swal({
+        Swal.fire({
           type: "error",
           title: "Error",
           text: `${error.status} ${error.statusText}`
