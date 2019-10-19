@@ -25,7 +25,7 @@ function fetchProducts() {
     var productList = $("#product-list");
 
     if (response.status !== "OK") {
-      swal({
+      Swal.fire({
         type: "error",
         title: "Error",
         text: response.message
@@ -45,7 +45,7 @@ function fetchProducts() {
       $("#cart-items").html(response.data.cart.items);
     }
   }).fail(function(error) {
-    swal({
+    Swal.fire({
       type: "error",
       title: "Error",
       text: `${error.status} ${error.statusText}`
@@ -110,7 +110,7 @@ function createProductCard(container, product) {
 
           $("#form-product-description").modal("show");
         } else {
-          swal({
+          Swal.fire({
             type: "error",
             title: "Error",
             text: `${error.status} ${error.statusText}`
@@ -155,7 +155,7 @@ function addToCart(myCard, qty) {
         }, 800);
         $("#cart-items").html(response.data.items);
       } else {
-        swal({
+        Swal.fire({
           type: "error",
           title: "Error",
           text: `${error.status} ${error.statusText}`
