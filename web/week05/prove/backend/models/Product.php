@@ -20,7 +20,7 @@ class Product extends DB
                 FROM product p
                 INNER JOIN product_image pi ON pi.id_product = p.id
                 WHERE pi.main = true %s",
-                $key !== '' ? 'AND title LIKE :title' : ''
+                $key !== '' ? 'AND p.title LIKE :title' : ''
             )
         );
         $stmt->bindValue(':title', "%$key%", PDO::PARAM_STR);
