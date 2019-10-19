@@ -16,7 +16,7 @@ class Product extends DB
         $stmt = $this->conn->prepare(
             sprintf(
                 "
-                SELECT id, title, price, discount_rate, picture, rating, pi.url
+                SELECT p.id, title, price, discount_rate, picture, rating, pi.url
                 FROM product p
                 INNER JOIN product_image pi ON pi.id_product = p.id
                 WHERE pi.main = true %s",
