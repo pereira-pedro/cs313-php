@@ -1,5 +1,5 @@
 <?php
-include_once 'Product.php';
+include_once 'models/Product.php';
 $id = filter_input(INPUT_POST, 'id', FILTER_VALIDATE_INT);
 
 try {
