@@ -6,14 +6,12 @@ $cart = $_SESSION['cart'];
 
 $key = filter_input(INPUT_POST, 'key', FILTER_SANITIZE_STRING);
 
-$result = [];
-
 try {
     $products = new Product();
 
     $data = $products->listProducts($key);
 
-    array_push($result, [
+    $result = [
         'status' => 'OK',
         'message' => '',
         'data' => [
@@ -24,9 +22,9 @@ try {
                 'total' => orderValue($cart)
             ]
         ]
-    ]);
+    ];
 } catch (PDOException $ex) {
-    array_push($result, [
+    $result = [
         'status' => 'FAIL',
         'message' => 'DB Error: ' . $ex->getMessage(),
         'data' => [
@@ -37,7 +35,7 @@ try {
                 'total' => orderValue($cart)
             ]
         ]
-    ]);
+    ];
 }
 
 
