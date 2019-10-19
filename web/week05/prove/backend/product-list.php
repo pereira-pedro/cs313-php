@@ -1,26 +1,43 @@
 <?php
 session_start();
 include_once 'utils.php';
+include_once 'models/Product.php';
 $cart = $_SESSION['cart'];
 
-// Get the contents of the JSON file 
-$strJsonFileContents = file_get_contents("products.json");
+$key = filter_input(INPUT_POST, 'key', FILTER_SANITIZE_STRING);
 
-// Convert to array 
-$data = json_decode($strJsonFileContents, true);
+try {
+    $products = new Product();
 
-$products = [
-    'status' => 'OK',
-    'message' => '',
-    'data' => [
-        'products' => $data,
-        'cart' => [
-            'cart' => $cart,
-            'items' => orderNumItems($cart),
-            'total' => orderValue($cart)
+    $data = $products->listProducts($key);
+
+    $result = [
+        'status' => 'OK',
+        'message' => '',
+        'data' => [
+            'products' => $data,
+            'cart' => [
+                'cart' => $cart,
+                'items' => orderNumItems($cart),
+                'total' => orderValue($cart)
+            ]
         ]
-    ]
-];
+    ];
+} catch (PDOException $ex) {
+    $result = [
+        'status' => 'FAIL',
+        'message' => 'DB Error: ' . $ex->getMessage(),
+        'data' => [
+            'products' => '',
+            'cart' => [
+                'cart' => $cart,
+                'items' => orderNumItems($cart),
+                'total' => orderValue($cart)
+            ]
+        ]
+    ];
+}
+
 
 header('Content-Type: application/json');
-echo json_encode($products);
+echo json_encode($results);
