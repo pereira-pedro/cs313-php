@@ -11,6 +11,11 @@ class Product extends DB
         $this->conn = $this->getConnection();
     }
 
+    function create()
+    {
+        throw new Message('Not implementaded.');
+    }
+
     function retrieve($id)
     {
         $stmt = $this->conn->prepare(
