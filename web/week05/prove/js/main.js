@@ -32,7 +32,7 @@ function fetchProducts(key) {
       key: key
     },
     function(response) {
-      var productList = $("#product-list");
+      const productList = $("#product-list");
 
       if (response.status !== "OK") {
         Swal.fire({
@@ -53,6 +53,10 @@ function fetchProducts(key) {
         });
 
         $("#cart-items").html(response.data.cart.items);
+      } else {
+        productList.html(
+          `Your search <b>'${key}'</b> didn't find any product.`
+        );
       }
     }
   ).fail(function(error) {
