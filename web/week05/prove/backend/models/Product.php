@@ -24,7 +24,6 @@ class Product extends DB
             )
         );
 
-        $key = '%' . $key . '%';
         $stmt->bindValue(':title', $key, PDO::PARAM_STR);
         $stmt->execute();
         $rows = $stmt->fetchAll(PDO::FETCH_OBJ);

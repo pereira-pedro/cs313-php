@@ -9,6 +9,7 @@ $key = filter_input(INPUT_GET, 'key', FILTER_SANITIZE_STRING);
 try {
     $products = new Product();
 
+    $key = '%' . $key . '%';
     $data = $products->listProducts($key);
 
     $result = [
