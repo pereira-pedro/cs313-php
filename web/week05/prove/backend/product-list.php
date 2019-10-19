@@ -4,7 +4,7 @@ include_once 'utils.php';
 include_once 'models/Product.php';
 $cart = $_SESSION['cart'];
 
-$key = filter_input(INPUT_POST, 'key', FILTER_SANITIZE_STRING);
+$key = filter_input(INPUT_GET, 'key', FILTER_SANITIZE_STRING);
 
 try {
     $products = new Product();
