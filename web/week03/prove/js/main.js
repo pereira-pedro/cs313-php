@@ -91,7 +91,7 @@ function createProductCard(container, product) {
             description.title
           );
           $("#form-product-description .product-description-subtitle").html(
-            response.data.description.subtitle
+            description.subtitle
           );
           $("#form-product-description .modal-footer .btn-primary")
             .off()

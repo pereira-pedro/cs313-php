@@ -14,11 +14,6 @@ $(function() {
     // fetch products and creates products card
     fetchProducts();
   });
-
-  $("#form-search-product").submit(function() {
-    fetchProducts($("#form-input-search").val());
-    event.preventDefault();
-  });
 });
 
 /**
@@ -26,36 +21,30 @@ $(function() {
  */
 function fetchProducts(key) {
   // use jQuery to fetch JSON file with products
-  $.getJSON(
-    "backend/product-list.php",
-    {
-      key: key
-    },
-    function(response) {
-      var productList = $("#product-list");
+  $.getJSON("backend/product-list.php", function(response) {
+    var productList = $("#product-list");
 
-      if (response.status !== "OK") {
-        Swal.fire({
-          type: "error",
-          title: "Error",
-          text: response.message
-        });
-        return;
-      }
-
-      // remove previous products
-      productList.children().remove();
-
-      // iterates through products array
-      if (response.data.products.length > 0) {
-        $.each(response.data.products, function(key, row) {
-          createProductCard(productList, row);
-        });
-
-        $("#cart-items").html(response.data.cart.items);
-      }
+    if (response.status !== "OK") {
+      Swal.fire({
+        type: "error",
+        title: "Error",
+        text: response.message
+      });
+      return;
     }
-  ).fail(function(error) {
+
+    // remove previous products
+    productList.children().remove();
+
+    // iterates through products array
+    if (response.data.products.length > 0) {
+      $.each(response.data.products, function(key, row) {
+        createProductCard(productList, row);
+      });
+
+      $("#cart-items").html(response.data.cart.items);
+    }
+  }).fail(function(error) {
     Swal.fire({
       type: "error",
       title: "Error",
@@ -97,11 +86,12 @@ function createProductCard(container, product) {
       function(response) {
         if (response.status === "OK") {
           $("#form-product-description-title").html(response.data.title);
+          const description = JSON.parse(response.data.description);
           $("#form-product-description .product-description-title").html(
-            response.data.description.title
+            description.title
           );
           $("#form-product-description .product-description-subtitle").html(
-            response.data.description.subtitle
+            description.subtitle
           );
           $("#form-product-description .modal-footer .btn-primary")
             .off()
@@ -115,7 +105,7 @@ function createProductCard(container, product) {
 
           var listContainer = $("#form-product-description .list-group");
           listContainer.empty();
-          $.each(response.data.description.details, function(key, row) {
+          $.each(description.details, function(key, row) {
             listContainer.append($(`<li class="list-group-item">${row}</li>`));
           });
 
