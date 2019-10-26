@@ -23,7 +23,7 @@ class Product extends DB
         );
         $stmt->bindValue(':title', $product->title);
         $stmt->bindValue(':price', floatval($product->price));
-        $stmt->bindValue(':description', $product->description);
+        $stmt->bindValue(':description', urldecode($product->description));
         $stmt->bindValue(':stock', $product->stock, PDO::PARAM_INT);
         $stmt->bindValue(':discount_rate', floatval($product->discount_rate));
         $stmt->bindValue(':tax_rate', floatval($product->tax_rate));
@@ -66,7 +66,7 @@ class Product extends DB
         );
         $stmt->bindValue(':title', $product->title);
         $stmt->bindValue(':price', floatval($product->price));
-        $stmt->bindValue(':description', $product->description);
+        $stmt->bindValue(':description', urldecode($product->description));
         $stmt->bindValue(':stock', $product->stock, PDO::PARAM_INT);
         $stmt->bindValue(':discount_rate', floatval($product->discount_rate));
         $stmt->bindValue(':tax_rate', floatval($product->tax_rate));
@@ -111,7 +111,7 @@ class Product extends DB
         return  [
             'id'    => [
                 'filter'    => FILTER_VALIDATE_INT,
-                'flags'     => FILTER_REQUIRE_SCALAR
+                'flags'     => FILTER_REQUIRE_SCALAR || FILTER_NULL_ON_FAILURE
             ],
             'title'      => FILTER_SANITIZE_ENCODED,
             'description'      => FILTER_SANITIZE_ENCODED,
