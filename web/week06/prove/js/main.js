@@ -142,7 +142,7 @@ function createProductCard(container, product) {
  * @param {Int} rating
  */
 function renderRating(rating) {
-  const html = "";
+  var html = "";
 
   if (rating === null) {
     return "Not rated yet!";
