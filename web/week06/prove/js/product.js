@@ -96,30 +96,32 @@ $(function() {
 function retrieveProduct(id) {
   $("#id").val(id);
   $("#action").val("retrieve");
-  $.post("backend/product-controller.php", $(this).serialize(), function(
-    response
-  ) {
-    if (response.status === "OK") {
-      $("#product-features").empty();
+  $.post(
+    "backend/product-controller.php",
+    $("#frm-product").serialize(),
+    function(response) {
+      if (response.status === "OK") {
+        $("#product-features").empty();
 
-      $.each(response.data, function(key, row) {
-        $(`#${key}`).val(row);
-      });
+        $.each(response.data, function(key, row) {
+          $(`#${key}`).val(row);
+        });
 
-      const productFeatures = $.parseJSON(response.data.description);
-      $("#det-title").val(productFeatures.title);
-      $("#det-subtitle").val(productFeatures.subtitle);
+        const productFeatures = $.parseJSON(response.data.description);
+        $("#det-title").val(productFeatures.title);
+        $("#det-subtitle").val(productFeatures.subtitle);
 
-      const listContainer = $("#product-features");
-      $.each(productFeatures.details, function(key, row) {
-        listContainer.append($(`<li class="list-group-item">${row}</li>`));
-      });
-    } else {
-      Swal.fire({
-        type: "error",
-        title: "Error",
-        text: response.message
-      });
+        const listContainer = $("#product-features");
+        $.each(productFeatures.details, function(key, row) {
+          listContainer.append($(`<li class="list-group-item">${row}</li>`));
+        });
+      } else {
+        Swal.fire({
+          type: "error",
+          title: "Error",
+          text: response.message
+        });
+      }
     }
-  });
+  );
 }
