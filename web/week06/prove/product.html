@@ -123,22 +123,26 @@
                 >
               </div>
               <div class="form-group">
-                <label for="det-item">
+                <label for="det-feature">
                   Feature list
                 </label>
                 <input
                   type="text"
                   class="form-control"
-                  id="det-item"
-                  aria-describedby="det-itemHelp"
+                  id="det-feature"
+                  aria-describedby="det-featureHelp"
                   placeholder="Enter a feature"
                 />
-                <small id="det-itemHelp" class="form-text text-muted"
-                  >Insert the feature to this item.</small
+                <small id="det-featureHelp" class="form-text text-muted"
+                  >Type a feature to this item.</small
                 >
+                <button class="btn" id="btn-det-feature">Insert feature</button>
               </div>
 
-              <ul id="product-features"></ul>
+              <ul
+                class="list-group list-group-flush"
+                id="product-features"
+              ></ul>
             </div>
           </div>
           <div class="form-group row">
@@ -224,7 +228,9 @@
             </div>
           </div>
           <div class="form-group row">
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <div class="col-sm-12 text-right">
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
           </div>
         </form>
       </div>
