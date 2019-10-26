@@ -67,7 +67,8 @@ $(function() {
             title: response.message
           });
           $("#frm-product").trigger("reset");
-          $("#product-features").empty();
+
+          emptyForm();
         } else {
           Swal.fire({
             type: "error",
@@ -80,7 +81,7 @@ $(function() {
   });
 
   $("#frm-product").on("reset", function(e) {
-    $("#product-features").empty();
+    emptyForm();
   });
 
   $("#title").typeahead({
@@ -128,4 +129,11 @@ function retrieveProduct(id) {
       }
     }
   );
+}
+
+function emptyForm() {
+  $("#product-features").empty();
+  $("#id").val("");
+  $("#description").val("");
+  $("#action").val("");
 }
