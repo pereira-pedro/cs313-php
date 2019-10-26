@@ -31,8 +31,8 @@ $(function() {
     });
 
     $("#description").val(JSON.stringify(description));
-    $("#tax_rate").val(Number($("#tax_rate").val()) / 100);
-    $("#discount_rate").val(Number($("#discount_rate").val()) / 100);
+    $("#tax_rate").val(Number($("#tax_rate_m").val()) / 100);
+    $("#discount_rate").val(Number($("#discount_rate_m").val()) / 100);
 
     $("#action").val("save");
 
@@ -118,8 +118,12 @@ function retrieveProduct(id) {
           $(`#${key}`).val(row);
         });
 
-        $("#tax_rate").val(percentage.format($("#tax_rate").val()));
-        $("#discount_rate").val(percentage.format($("#discount_rate").val()));
+        $("#tax_rate_m").val(
+          percentage.format($("#tax_rate").val()).slice(0, -1)
+        );
+        $("#discount_rate_m").val(
+          percentage.format($("#discount_rate").val()).slice(0, -1)
+        );
 
         const productFeatures = $.parseJSON(response.data.description);
         $("#det-title").val(productFeatures.title);
@@ -145,4 +149,6 @@ function emptyForm() {
   $("#id").val("");
   $("#description").val("");
   $("#action").val("");
+  $("#tax_rate").val("");
+  $("#discount_rate").val("");
 }
