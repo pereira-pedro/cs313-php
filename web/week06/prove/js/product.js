@@ -26,7 +26,7 @@ $(function() {
       description.details.push($(this).text());
     });
 
-    $("#description").val(description);
+    $("#description").val(JSON.stringify(description));
 
     $("#action").val("save");
 
