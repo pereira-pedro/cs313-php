@@ -9,7 +9,7 @@ try {
     $model = new Product();
 
     $product = Utils::getPostObject($model);
-    var_dump($action);
+    var_dump($product);
 
     switch ($action) {
         case 'save':
