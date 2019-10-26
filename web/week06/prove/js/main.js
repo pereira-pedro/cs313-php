@@ -142,7 +142,11 @@ function createProductCard(container, product) {
  * @param {Int} rating
  */
 function renderRating(rating) {
-  var html = "";
+  const html = "";
+
+  if (rating === null) {
+    return "Not rated yet!";
+  }
 
   for (i = 0; i < 5; i++) {
     html += `<span class="fa fa-star ${i < rating ? "checked" : ""}"></span>`;
