@@ -94,7 +94,7 @@ class Product extends DB
                 "
                 SELECT p.id, p.title, price, discount_rate, rating, pi.url AS picture
                 FROM product p
-                OUTER JOIN product_image pi ON pi.id_product = p.id AND pi.main = true
+                LEFT JOIN product_image pi ON pi.id_product = p.id AND pi.main = true
                 %s",
                 $key !== '' ? 'WHERE p.title ILIKE :title' : ''
             )
