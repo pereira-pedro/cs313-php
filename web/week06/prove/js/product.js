@@ -57,24 +57,26 @@ $(function() {
 
   $("#btn-delete").click(function() {
     $("#action").val("delete");
-    $.post("backend/product-controller.php", $(this).serialize(), function(
-      response
-    ) {
-      if (response.status === "OK") {
-        Toast.fire({
-          type: "success",
-          title: response.message
-        });
-        $("#frm-product").trigger("reset");
-        $("#product-features").empty();
-      } else {
-        Swal.fire({
-          type: "error",
-          title: "Error",
-          text: response.message
-        });
+    $.post(
+      "backend/product-controller.php",
+      $("#frm-product").serialize(),
+      function(response) {
+        if (response.status === "OK") {
+          Toast.fire({
+            type: "success",
+            title: response.message
+          });
+          $("#frm-product").trigger("reset");
+          $("#product-features").empty();
+        } else {
+          Swal.fire({
+            type: "error",
+            title: "Error",
+            text: response.message
+          });
+        }
       }
-    });
+    );
   });
 
   $("#title").typeahead({
