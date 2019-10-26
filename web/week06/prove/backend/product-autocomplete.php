@@ -9,7 +9,7 @@ try {
     $model = new Product();
 
     $key = '%' . $key . '%';
-    $result = $products->listAll($key);
+    $result = $model->listAll($key);
 } catch (PDOException $ex) {
     $result = [];
 }
