@@ -32,6 +32,6 @@ class Utils
 
     static function getPostObject($entity)
     {
-        return array2object(filter_input_array(INPUT_POST, $entity->getDefinition(), true));
+        return Utils::array2object(filter_input_array(INPUT_POST, $entity->getDefinition(), true));
     }
 }
