@@ -106,6 +106,24 @@ class Product extends DB
         return $rows;
     }
 
+    function listAllTA($key = '')
+    {
+        $stmt = $this->conn->prepare(
+            sprintf(
+                "
+                SELECT p.title
+                FROM product p
+                %s",
+                $key !== '' ? 'WHERE p.title ILIKE :title' : ''
+            )
+        );
+        $stmt->bindValue(':title', $key);
+        $stmt->execute();
+        $rows = $stmt->fetchAll(PDO::FETCH_OBJ);
+
+        return $rows;
+    }
+
     function getDefinition()
     {
         return  [
