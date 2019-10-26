@@ -14,7 +14,7 @@ try {
         case 'save':
             if ($product->id === null || $product->id === false) {
 
-                $new_id = $model->create($product);
+                $id = $model->create($product);
                 $message = "Product '$product->title' was created.";
             } else {
                 $model->update($product);
@@ -25,17 +25,23 @@ try {
             $model->delete($product->id);
             $message = "Product '$product->title' was deleted.";
             break;
+        case 'retrieve':
+            $data = $model->retrieve($product->id);
+            $id = $product->id;
+            break;
     }
     $response = [
         'status' => 'OK',
         'message' => $message,
-        'id' => $new_id
+        'id' => $id,
+        'data' => $data
     ];
 } catch (Exception $ex) {
     $response = [
         'status' => 'FAIL',
         'message' => $ex->getMessage(),
-        'id' => ''
+        'id' => '',
+        'data' => ''
     ];
 }
 
