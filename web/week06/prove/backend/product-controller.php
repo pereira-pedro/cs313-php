@@ -13,6 +13,7 @@ try {
     switch ($action) {
         case 'save':
             if ($product->id === null) {
+                var_dump($product);
                 $model->create($product);
                 $message = "Product '$product->title' was created.";
             } else {

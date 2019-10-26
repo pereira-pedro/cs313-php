@@ -33,7 +33,7 @@ $(function() {
     $.post("backend/product-controller.php", $(this).serialize(), function(
       response
     ) {
-      if (response.status !== "OK") {
+      if (response.status === "OK") {
         Toast.fire({
           type: "success",
           title: response.message
