@@ -21,12 +21,12 @@ class Product extends DB
             (:title, :price, :description, :stock, :discount_rate, :tax_rate, :rating)
             "
         );
-        $stmt->bindValue(':title', urldecode($product->title));
+        $stmt->bindValue(':title', $product->title);
         $stmt->bindValue(':price', floatval($product->price));
-        $stmt->bindValue(':description', urldecode($product->description));
+        $stmt->bindValue(':description', $product->description);
         $stmt->bindValue(':stock', $product->stock, PDO::PARAM_INT);
-        $stmt->bindValue(':discount_rate', floatval($product->discount_rate));
-        $stmt->bindValue(':tax_rate', floatval($product->tax_rate));
+        $stmt->bindValue(':discount_rate', floatval($product->discount_rate) / 100);
+        $stmt->bindValue(':tax_rate', floatval($product->tax_rate) / 100);
         $stmt->bindValue(':rating', $product->rating, PDO::PARAM_INT);
         $stmt->execute();
 
@@ -45,6 +45,8 @@ class Product extends DB
         $stmt->execute();
         $row = $stmt->fetch(PDO::FETCH_OBJ);
 
+        $row->tax_rate *= 100;
+        $row->discount_rate *= 100;
         return $row;
     }
 
@@ -64,12 +66,12 @@ class Product extends DB
             WHERE id = :id
             "
         );
-        $stmt->bindValue(':title', urldecode($product->title));
+        $stmt->bindValue(':title', $product->title);
         $stmt->bindValue(':price', floatval($product->price));
-        $stmt->bindValue(':description', urldecode($product->description));
+        $stmt->bindValue(':description', $product->description);
         $stmt->bindValue(':stock', $product->stock, PDO::PARAM_INT);
-        $stmt->bindValue(':discount_rate', floatval($product->discount_rate));
-        $stmt->bindValue(':tax_rate', floatval($product->tax_rate));
+        $stmt->bindValue(':discount_rate', floatval($product->discount_rate) / 100);
+        $stmt->bindValue(':tax_rate', floatval($product->tax_rate) / 100);
         $stmt->bindValue(':rating', $product->rating, PDO::PARAM_INT);
         $stmt->bindValue(':id', $product->id, PDO::PARAM_INT);
         $stmt->execute();
