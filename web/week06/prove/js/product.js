@@ -38,6 +38,7 @@ $(function() {
           type: "success",
           title: response.message
         });
+        $("#id").val(response.id);
       } else {
         Swal.fire({
           type: "error",
@@ -52,5 +53,27 @@ $(function() {
     $("#product-features").append(
       $("<li>", { class: "list-group-item" }).text($("#det-feature").val())
     );
+  });
+
+  $("#btn-delete").click(function() {
+    $("#action").val("delete");
+    $.post("backend/product-controller.php", $(this).serialize(), function(
+      response
+    ) {
+      if (response.status === "OK") {
+        Toast.fire({
+          type: "success",
+          title: response.message
+        });
+        $("#frm-product").trigger("reset");
+        $("#product-features").empty();
+      } else {
+        Swal.fire({
+          type: "error",
+          title: "Error",
+          text: response.message
+        });
+      }
+    });
   });
 });

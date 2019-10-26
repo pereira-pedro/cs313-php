@@ -15,7 +15,7 @@ try {
         case 'save':
             if ($product->id === null || $product->id === false) {
 
-                $model->create($product);
+                $new_id = $model->create($product);
                 $message = "Product '$product->title' was created.";
             } else {
                 $model->update($product);
@@ -29,12 +29,14 @@ try {
     }
     $response = [
         'status' => 'OK',
-        'message' => $message
+        'message' => $message,
+        'id' => $new_id
     ];
 } catch (Exception $ex) {
     $response = [
         'status' => 'FAIL',
-        'message' => $ex->getMessage()
+        'message' => $ex->getMessage(),
+        'id' => ''
     ];
 }
 

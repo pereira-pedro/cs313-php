@@ -30,7 +30,7 @@ class Product extends DB
         $stmt->bindValue(':rating', $product->rating, PDO::PARAM_INT);
         $stmt->execute();
 
-        return $stmt->lastInsertId('product_id_seq');
+        return $this->conn->lastInsertId('product_id_seq');
     }
 
     function retrieve($id)
