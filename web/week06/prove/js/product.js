@@ -4,7 +4,8 @@ const formatter = new Intl.NumberFormat("en-US", {
 });
 
 const percentage = new Intl.NumberFormat("en-US", {
-  style: "percent"
+  style: "percent",
+  minimumFractionDigits: 2
 });
 
 const Toast = Swal.mixin({
