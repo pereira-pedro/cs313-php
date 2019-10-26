@@ -14,8 +14,8 @@ try {
 
     foreach ($data as $row) {
         array_push($result, [
-            'id' => $data->id,
-            'name' => $data->title
+            'id' => $row->id,
+            'name' => $row->title
         ]);
     }
 } catch (PDOException $ex) {
