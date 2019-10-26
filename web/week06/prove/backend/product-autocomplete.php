@@ -13,7 +13,7 @@ try {
     $result = [];
 
     foreach ($data as $row) {
-        array_push($data, [
+        array_push($result, [
             'id' => $data->id,
             'name' => $data->title
         ]);
