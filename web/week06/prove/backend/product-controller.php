@@ -8,7 +8,7 @@ $action = filter_input(INPUT_POST, 'action');
 try {
     $model = new Product();
 
-    $product = Utils::getPostObject($model->getDefinition());
+    $product = Utils::getPostObject($model);
 
     switch ($action) {
         case 'save':
