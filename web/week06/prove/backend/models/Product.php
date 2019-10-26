@@ -111,10 +111,10 @@ class Product extends DB
         $stmt = $this->conn->prepare(
             sprintf(
                 "
-                SELECT p.title
-                FROM product p
+                SELECT id, title
+                FROM product
                 %s",
-                $key !== '' ? 'WHERE p.title ILIKE :title' : ''
+                $key !== '' ? 'WHERE title ILIKE :title' : ''
             )
         );
         $stmt->bindValue(':title', $key);

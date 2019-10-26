@@ -9,7 +9,15 @@ try {
     $model = new Product();
 
     $key = '%' . $key . '%';
-    $result = $model->listAllTA($key);
+    $data = $model->listAllTA($key);
+    $result = [];
+
+    foreach ($data as $row) {
+        array_push($data, [
+            'id' => $data->id,
+            'name' => $data->title
+        ]);
+    }
 } catch (PDOException $ex) {
     $result = [];
 }
