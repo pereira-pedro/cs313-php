@@ -47,11 +47,10 @@ $(function() {
       }
     });
   });
+
   $("#btn-det-feature").click(function() {
     $("#product-features").append(
-      $("<li>")
-        .class("list-group-item")
-        .text($("#det-feature").val())
+      $("<li>", { class: "list-group-item" }).text($("#det-feature").val())
     );
   });
 });
