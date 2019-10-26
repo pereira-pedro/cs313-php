@@ -13,7 +13,7 @@ try {
 
     switch ($action) {
         case 'save':
-            if ($product->id === null) {
+            if ($product->id === null || $product->id === false) {
 
                 $model->create($product);
                 $message = "Product '$product->title' was created.";
