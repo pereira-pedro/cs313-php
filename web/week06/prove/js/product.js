@@ -48,7 +48,7 @@ $(function() {
       }
     });
 
-    $("input.typeahead").typeahead({
+    $("title").typeahead({
       source: function(query, process) {
         return $.get(
           "backend/product-autocomplete.php",
