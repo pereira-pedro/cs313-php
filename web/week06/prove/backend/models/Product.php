@@ -42,13 +42,10 @@ class Product extends DB
             WHERE id = :id"
         );
 
-        var_dump($id);
-
         $stmt->bindValue(':id', $id, PDO::PARAM_INT);
         $stmt->execute();
         $row = $stmt->fetch(PDO::FETCH_OBJ);
 
-        var_dump($row);
         return $row;
     }
 

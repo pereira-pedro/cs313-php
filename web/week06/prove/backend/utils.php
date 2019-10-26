@@ -25,7 +25,7 @@ class Utils
     {
         $object = new stdClass();
         foreach ($array as $key => $value) {
-            $object->$key = is_string($value) ? urldecode($value) : $value;
+            $object->$key = $value;
         }
         return $object;
     }
