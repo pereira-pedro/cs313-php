@@ -3,6 +3,10 @@ const formatter = new Intl.NumberFormat("en-US", {
   currency: "USD"
 });
 
+const percentage = new Intl.NumberFormat("en-US", {
+  style: "percent"
+});
+
 const Toast = Swal.mixin({
   toast: true,
   position: "top-end",
@@ -27,6 +31,8 @@ $(function() {
     });
 
     $("#description").val(JSON.stringify(description));
+    $("#tax_rate").val(Number($("#tax_rate").val()) / 100);
+    $("#discount_rate").val(Number($("#discount_rate").val()) / 100);
 
     $("#action").val("save");
 
@@ -111,6 +117,9 @@ function retrieveProduct(id) {
         $.each(response.data, function(key, row) {
           $(`#${key}`).val(row);
         });
+
+        $("#tax_rate").val(percentage.format($("#tax_rate").val()));
+        $("#discount_rate").val(percentage.format($("#discount_rate").val()));
 
         const productFeatures = $.parseJSON(response.data.description);
         $("#det-title").val(productFeatures.title);
