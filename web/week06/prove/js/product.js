@@ -79,6 +79,10 @@ $(function() {
     );
   });
 
+  $("#frm-product").on("reset", function(e) {
+    $("#product-features").empty();
+  });
+
   $("#title").typeahead({
     source: function(query, process) {
       return $.get("backend/product-autocomplete.php", { key: query }, function(
