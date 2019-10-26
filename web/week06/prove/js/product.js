@@ -82,8 +82,8 @@ $(function() {
       return $.get("backend/product-autocomplete.php", { key: query }, function(
         data
       ) {
-        console.log(data);
-        data = $.parseJSON(data);
+        //console.log(data);
+        //data = $.parseJSON(data);
         return process(data);
       });
     }
