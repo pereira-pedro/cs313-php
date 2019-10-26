@@ -21,7 +21,7 @@ class Product extends DB
             (:title, :price, :description, :stock, :discount_rate, :tax_rate, :rating)
             "
         );
-        $stmt->bindValue(':title', $product->title);
+        $stmt->bindValue(':title', urldecode($product->title));
         $stmt->bindValue(':price', floatval($product->price));
         $stmt->bindValue(':description', urldecode($product->description));
         $stmt->bindValue(':stock', $product->stock, PDO::PARAM_INT);
@@ -64,7 +64,7 @@ class Product extends DB
             WHERE id = :id
             "
         );
-        $stmt->bindValue(':title', $product->title);
+        $stmt->bindValue(':title', urldecode($product->title));
         $stmt->bindValue(':price', floatval($product->price));
         $stmt->bindValue(':description', urldecode($product->description));
         $stmt->bindValue(':stock', $product->stock, PDO::PARAM_INT);
@@ -94,9 +94,9 @@ class Product extends DB
                 "
                 SELECT p.id, p.title, price, discount_rate, rating, pi.url AS picture
                 FROM product p
-                INNER JOIN product_image pi ON pi.id_product = p.id
-                WHERE pi.main = true %s",
-                $key !== '' ? 'AND p.title ILIKE :title' : ''
+                OUTER JOIN product_image pi ON pi.id_product = p.id AND pi.main = true
+                %s",
+                $key !== '' ? 'WHERE p.title ILIKE :title' : ''
             )
         );
         $stmt->bindValue(':title', $key);
