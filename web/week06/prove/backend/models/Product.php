@@ -106,7 +106,7 @@ class Product extends DB
         return $rows;
     }
 
-    static function getDefinition()
+    function getDefinition()
     {
         return  [
             'id'    => [
