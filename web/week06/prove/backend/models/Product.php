@@ -51,8 +51,6 @@ class Product extends DB
 
     function update($product)
     {
-        var_dump($product);
-
         $stmt = $this->conn->prepare(
             "
             UPDATE product
